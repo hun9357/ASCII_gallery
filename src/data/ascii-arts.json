@@ -888,6 +888,559 @@
       "content": "  .--------.\n  |.-\"\"-.  |\n  ||    || |\n  |'-__-'  |\n  `--------'",
       "category": "text-art",
       "tags": ["camera", "photo", "picture"]
+    },
+    {
+      "id": "fox",
+      "title": "Fox",
+      "content": " /\\   /\\\n(  o o  )\n(  =^=  )\n (m   m)",
+      "category": "animals",
+      "tags": ["fox", "cute", "animal"]
+    },
+    {
+      "id": "lion",
+      "title": "Lion",
+      "content": "  ∧_∧\n(◉ω◉)\n/つ🍖",
+      "category": "animals",
+      "tags": ["lion", "cat", "wild"]
+    },
+    {
+      "id": "shark",
+      "title": "Shark",
+      "content": "   __\n  ( o)>   |\\\n<___)   / |\n        |/",
+      "category": "animals",
+      "tags": ["shark", "ocean", "fish"]
+    },
+    {
+      "id": "crab",
+      "title": "Crab",
+      "content": "(\\/)!_!(\\/)\n  (o o)\n  \\   /",
+      "category": "animals",
+      "tags": ["crab", "ocean", "beach"]
+    },
+    {
+      "id": "octopus",
+      "title": "Octopus",
+      "content": "    ___\n   (o o)\n  /( Y )\\\n /( )^( )\\\n(_)   (_)",
+      "category": "animals",
+      "tags": ["octopus", "ocean", "sea"]
+    },
+    {
+      "id": "bee",
+      "title": "Bee",
+      "content": "  \\ /_\n  ='.'=\n  /\\_/\\\n  | | |",
+      "category": "animals",
+      "tags": ["bee", "insect", "buzz"]
+    },
+    {
+      "id": "ladybug",
+      "title": "Ladybug",
+      "content": "  _/\\_\n /(●.●)\\\n  \\_-_/",
+      "category": "animals",
+      "tags": ["ladybug", "insect", "cute"]
+    },
+    {
+      "id": "monkey",
+      "title": "Monkey",
+      "content": "  /\\ /\\\n ( . .)\n  (u u)つ🍌",
+      "category": "animals",
+      "tags": ["monkey", "banana", "cute"]
+    },
+    {
+      "id": "panda",
+      "title": "Panda",
+      "content": "  ∩___∩\n  | ・ω・|\n  |     |\n  |     |\n  U U U U",
+      "category": "animals",
+      "tags": ["panda", "bear", "cute"]
+    },
+    {
+      "id": "bat",
+      "title": "Bat",
+      "content": " _    _\n/o\\  /o\\\n\\_\\\\//_ /\n  \\  /\n   \\/",
+      "category": "animals",
+      "tags": ["bat", "halloween", "night"]
+    },
+    {
+      "id": "chicken",
+      "title": "Chicken",
+      "content": "   _\n  (o>\n  /||\n   ||",
+      "category": "animals",
+      "tags": ["chicken", "bird", "farm"]
+    },
+    {
+      "id": "horse",
+      "title": "Horse",
+      "content": "  .,,.  \n ,;;*;;;;,\n.-'`( ';;;',_\n/'  |\\ `-;;; '-._\n|   | `'.,( ';,'-\n|   |     | '-'\n  \\ /",
+      "category": "animals",
+      "tags": ["horse", "animal", "farm"]
+    },
+    {
+      "id": "giraffe",
+      "title": "Giraffe",
+      "content": "    .-=-.\n   /  o o\\\n  ( =  ^  )\n   )`---'(\n   |     |\n   |     |\n   |     |\n   |     |\n   /| | |\\\n   \\| | |/",
+      "category": "animals",
+      "tags": ["giraffe", "tall", "zoo"]
+    },
+    {
+      "id": "angry-glare",
+      "title": "Angry Glare",
+      "content": "(╬ Ò﹏Ó)",
+      "category": "emojis",
+      "tags": ["angry", "glare", "kaomoji"]
+    },
+    {
+      "id": "cute-happy",
+      "title": "Cute Happy",
+      "content": "(｡◕‿◕｡)",
+      "category": "emojis",
+      "tags": ["cute", "happy", "kaomoji"]
+    },
+    {
+      "id": "devil",
+      "title": "Devil",
+      "content": "(͠≖ ͜ʖ͠≖)",
+      "category": "emojis",
+      "tags": ["devil", "evil", "kaomoji"]
+    },
+    {
+      "id": "angel",
+      "title": "Angel",
+      "content": "☆ﾐ(o*･ω･)ﾉ",
+      "category": "emojis",
+      "tags": ["angel", "cute", "kaomoji"]
+    },
+    {
+      "id": "flexing",
+      "title": "Flexing",
+      "content": "ᕙ(⇀‸↼‶)ᕗ",
+      "category": "emojis",
+      "tags": ["flex", "strong", "muscle", "kaomoji"]
+    },
+    {
+      "id": "flipping-hair",
+      "title": "Flipping Hair",
+      "content": "(∿°○°)∿",
+      "category": "emojis",
+      "tags": ["hair", "flip", "kaomoji"]
+    },
+    {
+      "id": "sweating",
+      "title": "Sweating",
+      "content": "(;´Д`)",
+      "category": "emojis",
+      "tags": ["sweat", "nervous", "kaomoji"]
+    },
+    {
+      "id": "salute",
+      "title": "Salute",
+      "content": "(￣^￣)ゞ",
+      "category": "emojis",
+      "tags": ["salute", "military", "kaomoji"]
+    },
+    {
+      "id": "surrender",
+      "title": "Surrender",
+      "content": "┐(´д`)┌",
+      "category": "emojis",
+      "tags": ["surrender", "give up", "kaomoji"]
+    },
+    {
+      "id": "happy-tears",
+      "title": "Happy Tears",
+      "content": "(ಥ‿ಥ)",
+      "category": "emojis",
+      "tags": ["happy", "tears", "joy", "kaomoji"]
+    },
+    {
+      "id": "kiss",
+      "title": "Kiss",
+      "content": "(づ￣ ³￣)づ",
+      "category": "emojis",
+      "tags": ["kiss", "love", "kaomoji"]
+    },
+    {
+      "id": "pointing",
+      "title": "Pointing",
+      "content": "(☞ﾟヮﾟ)☞",
+      "category": "emojis",
+      "tags": ["point", "finger", "kaomoji"]
+    },
+    {
+      "id": "peace-sign",
+      "title": "Peace Sign Emoji",
+      "content": "✌(◕‿-)✌",
+      "category": "emojis",
+      "tags": ["peace", "victory", "kaomoji"]
+    },
+    {
+      "id": "questioning",
+      "title": "Questioning",
+      "content": "(´･ω･`)?",
+      "category": "emojis",
+      "tags": ["question", "confused", "kaomoji"]
+    },
+    {
+      "id": "rolling-eyes",
+      "title": "Rolling Eyes",
+      "content": "(¬_¬)",
+      "category": "emojis",
+      "tags": ["eyes", "annoyed", "kaomoji"]
+    },
+    {
+      "id": "waving",
+      "title": "Waving",
+      "content": "( ´ ▽ ` )ﾉ",
+      "category": "emojis",
+      "tags": ["wave", "hello", "bye", "kaomoji"]
+    },
+    {
+      "id": "omg-banner",
+      "title": "OMG Banner",
+      "content": " ██████╗ ███╗   ███╗ ██████╗ \n██╔═══██╗████╗ ████║██╔════╝ \n██║   ██║██╔████╔██║██║  ███╗\n██║   ██║██║╚██╔╝██║██║   ██║\n╚██████╔╝██║ ╚═╝ ██║╚██████╔╝\n ╚═════╝ ╚═╝     ╚═╝ ╚═════╝",
+      "category": "text-art",
+      "tags": ["omg", "surprise", "banner"]
+    },
+    {
+      "id": "yes-banner",
+      "title": "YES Banner",
+      "content": "██╗   ██╗███████╗███████╗\n╚██╗ ██╔╝██╔════╝██╔════╝\n ╚████╔╝ █████╗  ███████╗\n  ╚██╔╝  ██╔══╝  ╚════██║\n   ██║   ███████╗███████║\n   ╚═╝   ╚══════╝╚══════╝",
+      "category": "text-art",
+      "tags": ["yes", "agree", "banner"]
+    },
+    {
+      "id": "no-banner",
+      "title": "NO Banner",
+      "content": "███╗   ██╗ ██████╗ \n████╗  ██║██╔═══██╗\n██╔██╗ ██║██║   ██║\n██║╚██╗██║██║   ██║\n██║ ╚████║╚██████╔╝\n╚═╝  ╚═══╝ ╚═════╝",
+      "category": "text-art",
+      "tags": ["no", "deny", "banner"]
+    },
+    {
+      "id": "win-banner",
+      "title": "WIN Banner",
+      "content": "██╗    ██╗██╗███╗   ██╗\n██║    ██║██║████╗  ██║\n██║ █╗ ██║██║██╔██╗ ██║\n██║███╗██║██║██║╚██╗██║\n╚███╔███╔╝██║██║ ╚████║\n ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝",
+      "category": "text-art",
+      "tags": ["win", "winner", "banner"]
+    },
+    {
+      "id": "fail-banner",
+      "title": "FAIL Banner",
+      "content": "███████╗ █████╗ ██╗██╗     \n██╔════╝██╔══██╗██║██║     \n█████╗  ███████║██║██║     \n██╔══╝  ██╔══██║██║██║     \n██║     ██║  ██║██║███████╗\n╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝",
+      "category": "text-art",
+      "tags": ["fail", "lose", "banner"]
+    },
+    {
+      "id": "epic-banner",
+      "title": "EPIC Banner",
+      "content": "███████╗██████╗ ██╗ ██████╗\n██╔════╝██╔══██╗██║██╔════╝\n█████╗  ██████╔╝██║██║     \n██╔══╝  ██╔═══╝ ██║██║     \n███████╗██║     ██║╚██████╗\n╚══════╝╚═╝     ╚═╝ ╚═════╝",
+      "category": "text-art",
+      "tags": ["epic", "awesome", "banner"]
+    },
+    {
+      "id": "bruh-banner",
+      "title": "BRUH Banner",
+      "content": "██████╗ ██████╗ ██╗   ██╗██╗  ██╗\n██╔══██╗██╔══██╗██║   ██║██║  ██║\n██████╔╝██████╔╝██║   ██║███████║\n██╔══██╗██╔══██╗██║   ██║██╔══██║\n██████╔╝██║  ██║╚██████╔╝██║  ██║\n╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝",
+      "category": "text-art",
+      "tags": ["bruh", "meme", "banner"]
+    },
+    {
+      "id": "pizza",
+      "title": "Pizza",
+      "content": "    ▲\n   ╱ ╲\n  ╱ ● ╲\n ╱  ●  ╲\n╱___●___╲",
+      "category": "text-art",
+      "tags": ["pizza", "food", "slice"]
+    },
+    {
+      "id": "burger",
+      "title": "Burger",
+      "content": "  ___\n /   \\\n|~~~~~|\n| === |\n|~~~~~|\n \\___/",
+      "category": "text-art",
+      "tags": ["burger", "food", "fast food"]
+    },
+    {
+      "id": "ice-cream",
+      "title": "Ice Cream",
+      "content": " .-----.\n( o   o )\n |  <  |\n  \\   /\n   | |\n   | |\n   |_|",
+      "category": "text-art",
+      "tags": ["ice cream", "dessert", "summer"]
+    },
+    {
+      "id": "beer",
+      "title": "Beer",
+      "content": "   ~  ~\n ( o  o)\n |\\    |\n | \\   |\n |  \\__|\n |_____/",
+      "category": "text-art",
+      "tags": ["beer", "drink", "cheers"]
+    },
+    {
+      "id": "guitar",
+      "title": "Guitar",
+      "content": "     ____\n    |*   |\n    |____|_\n    |=    |\n    |     |\n    |=    |\n    |     |\n    |=    |\n   /       \\\n  |         |\n   \\_______/",
+      "category": "text-art",
+      "tags": ["guitar", "music", "instrument"]
+    },
+    {
+      "id": "headphones",
+      "title": "Headphones",
+      "content": " .-------.\n/ .-----. \\\n| |     | |\n| |     | |\n \\ '---' /\n  '-----'",
+      "category": "text-art",
+      "tags": ["headphones", "music", "audio"]
+    },
+    {
+      "id": "tv",
+      "title": "TV",
+      "content": " __________\n|  ______  |\n| |      | |\n| |      | |\n| |______| |\n|____[]____|",
+      "category": "text-art",
+      "tags": ["tv", "television", "screen"]
+    },
+    {
+      "id": "smartphone",
+      "title": "Smartphone",
+      "content": " _______\n|       |\n|       |\n|       |\n|       |\n|   O   |\n|_______|",
+      "category": "text-art",
+      "tags": ["phone", "smartphone", "mobile"]
+    },
+    {
+      "id": "book",
+      "title": "Book",
+      "content": "  _______\n /       /|\n/_______/ |\n|       | |\n|       | /\n|_______|/",
+      "category": "text-art",
+      "tags": ["book", "read", "study"]
+    },
+    {
+      "id": "key",
+      "title": "Key",
+      "content": "  o\n /|\n/ |\n  |____",
+      "category": "text-art",
+      "tags": ["key", "lock", "security"]
+    },
+    {
+      "id": "lock",
+      "title": "Lock",
+      "content": "   .-.\n  (   )\n __|_|__\n|       |\n| O     |\n|_______|",
+      "category": "text-art",
+      "tags": ["lock", "secure", "padlock"]
+    },
+    {
+      "id": "lightbulb",
+      "title": "Lightbulb",
+      "content": "   ,-.\n  /   \\\n (     )\n  \\   /\n   | |\n   | |\n   '-'",
+      "category": "text-art",
+      "tags": ["lightbulb", "idea", "bright"]
+    },
+    {
+      "id": "airplane",
+      "title": "Airplane",
+      "content": "    __|__\n---o--(_)--o---\n       T",
+      "category": "text-art",
+      "tags": ["airplane", "plane", "travel"]
+    },
+    {
+      "id": "car",
+      "title": "Car",
+      "content": "   ______\n  /|_||_\\`.__\n (   _    _ _\\\n =`-(_)--(_)-'",
+      "category": "text-art",
+      "tags": ["car", "vehicle", "drive"]
+    },
+    {
+      "id": "bicycle",
+      "title": "Bicycle",
+      "content": "    __o\n  _`\\<,_\n (*)/ (*)",
+      "category": "text-art",
+      "tags": ["bicycle", "bike", "ride"]
+    },
+    {
+      "id": "anchor",
+      "title": "Anchor",
+      "content": "   _\n  (_)\n --+--\n   |\n  / \\\n (_Y_)",
+      "category": "symbols",
+      "tags": ["anchor", "ship", "nautical"]
+    },
+    {
+      "id": "skull-symbol",
+      "title": "Skull Symbol",
+      "content": "☠",
+      "category": "symbols",
+      "tags": ["skull", "danger", "pirate"]
+    },
+    {
+      "id": "biohazard",
+      "title": "Biohazard",
+      "content": "☣",
+      "category": "symbols",
+      "tags": ["biohazard", "danger", "warning"]
+    },
+    {
+      "id": "radioactive",
+      "title": "Radioactive",
+      "content": "☢",
+      "category": "symbols",
+      "tags": ["radioactive", "nuclear", "danger"]
+    },
+    {
+      "id": "recycle",
+      "title": "Recycle",
+      "content": "♻",
+      "category": "symbols",
+      "tags": ["recycle", "eco", "green"]
+    },
+    {
+      "id": "wifi",
+      "title": "WiFi Symbol",
+      "content": "  .-.  \n /   \\ \n|  .  |",
+      "category": "symbols",
+      "tags": ["wifi", "internet", "signal"]
+    },
+    {
+      "id": "power",
+      "title": "Power Button",
+      "content": "⏻",
+      "category": "symbols",
+      "tags": ["power", "button", "on off"]
+    },
+    {
+      "id": "play",
+      "title": "Play Button",
+      "content": "▶",
+      "category": "symbols",
+      "tags": ["play", "start", "video"]
+    },
+    {
+      "id": "pause",
+      "title": "Pause Button",
+      "content": "⏸",
+      "category": "symbols",
+      "tags": ["pause", "stop", "video"]
+    },
+    {
+      "id": "spade",
+      "title": "Spade",
+      "content": "♠",
+      "category": "symbols",
+      "tags": ["spade", "cards", "poker"]
+    },
+    {
+      "id": "club",
+      "title": "Club",
+      "content": "♣",
+      "category": "symbols",
+      "tags": ["club", "cards", "poker"]
+    },
+    {
+      "id": "diamond-card",
+      "title": "Diamond Card",
+      "content": "♦",
+      "category": "symbols",
+      "tags": ["diamond", "cards", "poker"]
+    },
+    {
+      "id": "border-cross",
+      "title": "Cross Border",
+      "content": "✚ ✙ ✚ ✙ ✚ ✙ ✚ ✙ ✚",
+      "category": "borders",
+      "tags": ["border", "cross", "divider"]
+    },
+    {
+      "id": "border-snow",
+      "title": "Snowflake Border",
+      "content": "❄ ❅ ❆ ❄ ❅ ❆ ❄ ❅ ❆",
+      "category": "borders",
+      "tags": ["border", "snow", "winter", "divider"]
+    },
+    {
+      "id": "border-sun",
+      "title": "Sun Border",
+      "content": "☀ ✦ ☀ ✦ ☀ ✦ ☀ ✦ ☀",
+      "category": "borders",
+      "tags": ["border", "sun", "summer", "divider"]
+    },
+    {
+      "id": "border-moon",
+      "title": "Moon Border",
+      "content": "☽ ★ ☾ ★ ☽ ★ ☾ ★ ☽",
+      "category": "borders",
+      "tags": ["border", "moon", "night", "divider"]
+    },
+    {
+      "id": "border-leaf",
+      "title": "Leaf Border",
+      "content": "🍃 🌿 🍃 🌿 🍃 🌿 🍃 🌿 🍃",
+      "category": "borders",
+      "tags": ["border", "leaf", "nature", "divider"]
+    },
+    {
+      "id": "border-paw",
+      "title": "Paw Print Border",
+      "content": "🐾 · 🐾 · 🐾 · 🐾 · 🐾",
+      "category": "borders",
+      "tags": ["border", "paw", "animal", "divider"]
+    },
+    {
+      "id": "mother-day",
+      "title": "Mother's Day",
+      "content": "♥ Happy ♥\nMother's\n  Day!\n  🌷🌷",
+      "category": "text-art",
+      "tags": ["mother", "mom", "holiday", "love"]
+    },
+    {
+      "id": "father-day",
+      "title": "Father's Day",
+      "content": "★ Happy ★\nFather's\n  Day!\n  👔",
+      "category": "text-art",
+      "tags": ["father", "dad", "holiday"]
+    },
+    {
+      "id": "thanksgiving",
+      "title": "Thanksgiving",
+      "content": "  \\|/\n  (o)\n /|T|\\\nHAPPY\nTHANKS\nGIVING!",
+      "category": "text-art",
+      "tags": ["thanksgiving", "turkey", "holiday"]
+    },
+    {
+      "id": "st-patrick",
+      "title": "St Patrick",
+      "content": "  ☘️\n Lucky\n  Day!\n☘️  ☘️",
+      "category": "text-art",
+      "tags": ["st patrick", "clover", "lucky", "holiday"]
+    },
+    {
+      "id": "graduation",
+      "title": "Graduation",
+      "content": "    ___\n   |   |\n   |===|\n  /|   |\\\n   |   |\n  🎓CONGRATS!",
+      "category": "text-art",
+      "tags": ["graduation", "congrats", "school"]
+    },
+    {
+      "id": "clock",
+      "title": "Clock",
+      "content": "  .--.  \n /    \\ \n| 9  3 |\n|  |   |\n \\  6 / \n  '--'",
+      "category": "text-art",
+      "tags": ["clock", "time", "watch"]
+    },
+    {
+      "id": "hourglass-art",
+      "title": "Hourglass Art",
+      "content": " _____\n|     |\n \\   /\n  | |\n /   \\\n|_____|",
+      "category": "text-art",
+      "tags": ["hourglass", "time", "wait"]
+    },
+    {
+      "id": "crown-art",
+      "title": "Crown Art",
+      "content": "  /\\ /\\ /\\\n /  V  V  \\\n|         |\n '---------'",
+      "category": "text-art",
+      "tags": ["crown", "king", "queen", "royal"]
+    },
+    {
+      "id": "sword-art",
+      "title": "Sword Art",
+      "content": "    /|\n   / |\n  /  |\n |   |\n |   |\n |===|\n |   |\n  \\ /\n   V",
+      "category": "text-art",
+      "tags": ["sword", "blade", "weapon", "gaming"]
+    },
+    {
+      "id": "shield",
+      "title": "Shield",
+      "content": " .-----.\n/       \\\n|       |\n|       |\n \\     /\n  \\   /\n   \\ /\n    V",
+      "category": "text-art",
+      "tags": ["shield", "defense", "knight"]
     }
   ]
 }
