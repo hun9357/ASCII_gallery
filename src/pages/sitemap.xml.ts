@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import asciiArts from '../data/ascii-arts.json';
 import categories from '../data/categories.json';
 
-const siteUrl = 'https://ascii-art-gallery.com';
+const siteUrl = 'https://steady-tiramisu-8e81fc.netlify.app';
 
 export const GET: APIRoute = async () => {
   const today = new Date().toISOString().split('T')[0];
