@@ -503,6 +503,391 @@
       "content": " _____________\n|  _________  |\n| |    _    | |\n| |  _| |_  | |\n| | |_   _| | |\n| |   |_|   | |\n|_|_________|_|",
       "category": "text-art",
       "tags": ["game", "controller", "gaming"]
+    },
+    {
+      "id": "penguin",
+      "title": "Penguin",
+      "content": "   _\n  (o)\n /( )\\\n  ^ ^",
+      "category": "animals",
+      "tags": ["penguin", "bird", "cute", "winter"]
+    },
+    {
+      "id": "dolphin",
+      "title": "Dolphin",
+      "content": "        ,\n      __)\\__\n    ,'    . \\\n    | @    @ |\n,   (    `>  )\n \\   '-__-' /\n  `-.___.-'",
+      "category": "animals",
+      "tags": ["dolphin", "ocean", "sea"]
+    },
+    {
+      "id": "unicorn",
+      "title": "Unicorn",
+      "content": "         \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\              \n      \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\            \n     \\\\\\\\\\\\\\\\\\\\\\ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\          \n    \\\\\\\\\\\\  \\\\\\   \\\\\\\\\\\\\\\\\\\\\\\\\\\\/         \n   ,/    '----'    \\  \\n  / |  (\\    /)   |  \\\n |  (   \\\\  //    )   |\n  \\  \\   \\\\//   /   /\n   \\  '--    --'   /\n    '------------'",
+      "category": "animals",
+      "tags": ["unicorn", "fantasy", "magic"]
+    },
+    {
+      "id": "dinosaur",
+      "title": "Dinosaur",
+      "content": "            __\n           / _)\n    .-^^^-/ /\n __/       /\n<__.|_|-|_|",
+      "category": "animals",
+      "tags": ["dinosaur", "dino", "t-rex"]
+    },
+    {
+      "id": "frog",
+      "title": "Frog",
+      "content": "  @..@\n (----)\n( >__< )\n^^    ^^",
+      "category": "animals",
+      "tags": ["frog", "cute", "simple"]
+    },
+    {
+      "id": "pig",
+      "title": "Pig",
+      "content": "  ^  ^\n (o  o)\n  (  )\n  (oo)",
+      "category": "animals",
+      "tags": ["pig", "farm", "cute"]
+    },
+    {
+      "id": "mouse",
+      "title": "Mouse",
+      "content": "(\\,/)\n(o o)\n(_Y_)\n \" \"",
+      "category": "animals",
+      "tags": ["mouse", "cute", "small"]
+    },
+    {
+      "id": "duck",
+      "title": "Duck",
+      "content": "  __\n<(o )___\n ( ._> /\n  `---'",
+      "category": "animals",
+      "tags": ["duck", "bird", "cute"]
+    },
+    {
+      "id": "whale",
+      "title": "Whale",
+      "content": "         .\n        \":\"\n      ___:____     |\"\\/\"|\n    ,'        `.    \\  /\n    |  O        \\___/  |\n  ~^~^~^~^~^~^~^~^~^~^~^~^~",
+      "category": "animals",
+      "tags": ["whale", "ocean", "sea"]
+    },
+    {
+      "id": "turtle",
+      "title": "Turtle",
+      "content": "    _____     ____\n   /      \\  |  o | \n  |        |/ ___\\| \n  |_________/     \n  |_|_| |_|_|",
+      "category": "animals",
+      "tags": ["turtle", "slow", "cute"]
+    },
+    {
+      "id": "angry-face",
+      "title": "Angry Face",
+      "content": "(ノಠ益ಠ)ノ",
+      "category": "emojis",
+      "tags": ["angry", "mad", "kaomoji"]
+    },
+    {
+      "id": "crying-face",
+      "title": "Crying Face",
+      "content": "(ಥ_ಥ)",
+      "category": "emojis",
+      "tags": ["cry", "sad", "tears", "kaomoji"]
+    },
+    {
+      "id": "dancing",
+      "title": "Dancing",
+      "content": "┏(・o・)┛♪┗ ( ・o・) ┓",
+      "category": "emojis",
+      "tags": ["dance", "happy", "party", "kaomoji"]
+    },
+    {
+      "id": "running",
+      "title": "Running Away",
+      "content": "ε=ε=ε=┌(;*´Д`)ノ",
+      "category": "emojis",
+      "tags": ["run", "escape", "kaomoji"]
+    },
+    {
+      "id": "sleeping",
+      "title": "Sleeping",
+      "content": "(－_－) zzZ",
+      "category": "emojis",
+      "tags": ["sleep", "tired", "zzz", "kaomoji"]
+    },
+    {
+      "id": "bear-hug",
+      "title": "Bear Hug",
+      "content": "ʕっ•ᴥ•ʔっ",
+      "category": "emojis",
+      "tags": ["bear", "hug", "cute", "kaomoji"]
+    },
+    {
+      "id": "whatever",
+      "title": "Whatever",
+      "content": "┐(´д`)┌",
+      "category": "emojis",
+      "tags": ["whatever", "shrug", "meh", "kaomoji"]
+    },
+    {
+      "id": "shocked",
+      "title": "Shocked",
+      "content": "(°△°|||)",
+      "category": "emojis",
+      "tags": ["shock", "surprise", "kaomoji"]
+    },
+    {
+      "id": "flipping-table",
+      "title": "Intense Table Flip",
+      "content": "(ノಠ益ಠ)ノ彡┻━┻",
+      "category": "emojis",
+      "tags": ["table", "flip", "angry", "intense"]
+    },
+    {
+      "id": "looking-down",
+      "title": "Looking Down",
+      "content": "(；′⌒`)",
+      "category": "emojis",
+      "tags": ["shy", "nervous", "kaomoji"]
+    },
+    {
+      "id": "punching",
+      "title": "Punching",
+      "content": "( •̀ω•́ )σ",
+      "category": "emojis",
+      "tags": ["punch", "fight", "kaomoji"]
+    },
+    {
+      "id": "sparkle-eyes",
+      "title": "Sparkle Eyes",
+      "content": "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧",
+      "category": "emojis",
+      "tags": ["sparkle", "excited", "happy", "kaomoji"]
+    },
+    {
+      "id": "nervous",
+      "title": "Nervous",
+      "content": "(⊙﹏⊙)",
+      "category": "emojis",
+      "tags": ["nervous", "worried", "kaomoji"]
+    },
+    {
+      "id": "blush",
+      "title": "Blushing",
+      "content": "(⁄ ⁄•⁄ω⁄•⁄ ⁄)",
+      "category": "emojis",
+      "tags": ["blush", "shy", "cute", "kaomoji"]
+    },
+    {
+      "id": "thumbs-up-emoji",
+      "title": "Thumbs Up Emoji",
+      "content": "(b ᵔ▽ᵔ)b",
+      "category": "emojis",
+      "tags": ["thumbs", "good", "approve", "kaomoji"]
+    },
+    {
+      "id": "gg-banner",
+      "title": "GG Banner",
+      "content": " ██████╗  ██████╗ \n██╔════╝ ██╔════╝ \n██║  ███╗██║  ███╗\n██║   ██║██║   ██║\n╚██████╔╝╚██████╔╝\n ╚═════╝  ╚═════╝",
+      "category": "text-art",
+      "tags": ["gg", "gaming", "banner"]
+    },
+    {
+      "id": "lol-banner",
+      "title": "LOL Banner",
+      "content": "██╗      ██████╗ ██╗     \n██║     ██╔═══██╗██║     \n██║     ██║   ██║██║     \n██║     ██║   ██║██║     \n███████╗╚██████╔╝███████╗\n╚══════╝ ╚═════╝ ╚══════╝",
+      "category": "text-art",
+      "tags": ["lol", "laugh", "banner"]
+    },
+    {
+      "id": "rip-banner",
+      "title": "RIP Banner",
+      "content": "██████╗ ██╗██████╗ \n██╔══██╗██║██╔══██╗\n██████╔╝██║██████╔╝\n██╔══██╗██║██╔═══╝ \n██║  ██║██║██║     \n╚═╝  ╚═╝╚═╝╚═╝",
+      "category": "text-art",
+      "tags": ["rip", "rest", "banner"]
+    },
+    {
+      "id": "wow-banner",
+      "title": "WOW Banner",
+      "content": "██╗    ██╗ ██████╗ ██╗    ██╗\n██║    ██║██╔═══██╗██║    ██║\n██║ █╗ ██║██║   ██║██║ █╗ ██║\n██║███╗██║██║   ██║██║███╗██║\n╚███╔███╔╝╚██████╔╝╚███╔███╔╝\n ╚══╝╚══╝  ╚═════╝  ╚══╝╚══╝",
+      "category": "text-art",
+      "tags": ["wow", "surprise", "banner"]
+    },
+    {
+      "id": "hi-banner",
+      "title": "HI Banner",
+      "content": "██╗  ██╗██╗\n██║  ██║██║\n███████║██║\n██╔══██║██║\n██║  ██║██║\n╚═╝  ╚═╝╚═╝",
+      "category": "text-art",
+      "tags": ["hi", "hello", "greeting", "banner"]
+    },
+    {
+      "id": "bye-banner",
+      "title": "BYE Banner",
+      "content": "██████╗ ██╗   ██╗███████╗\n██╔══██╗╚██╗ ██╔╝██╔════╝\n██████╔╝ ╚████╔╝ █████╗  \n██╔══██╗  ╚██╔╝  ██╔══╝  \n██████╔╝   ██║   ███████╗\n╚═════╝    ╚═╝   ╚══════╝",
+      "category": "text-art",
+      "tags": ["bye", "goodbye", "banner"]
+    },
+    {
+      "id": "diamond",
+      "title": "Diamond",
+      "content": "   /\\\n  /  \\\n /    \\\n \\    /\n  \\  /\n   \\/",
+      "category": "symbols",
+      "tags": ["diamond", "gem", "shape"]
+    },
+    {
+      "id": "lightning",
+      "title": "Lightning Bolt",
+      "content": "  /\\\n /  \\\n/   /\n\\  \\\n \\  \\\n  \\/",
+      "category": "symbols",
+      "tags": ["lightning", "bolt", "electric"]
+    },
+    {
+      "id": "infinity",
+      "title": "Infinity",
+      "content": "∞",
+      "category": "symbols",
+      "tags": ["infinity", "forever", "simple"]
+    },
+    {
+      "id": "peace",
+      "title": "Peace Sign",
+      "content": "☮",
+      "category": "symbols",
+      "tags": ["peace", "symbol", "simple"]
+    },
+    {
+      "id": "yin-yang",
+      "title": "Yin Yang",
+      "content": "☯",
+      "category": "symbols",
+      "tags": ["yin", "yang", "balance"]
+    },
+    {
+      "id": "snowflake",
+      "title": "Snowflake",
+      "content": "❄",
+      "category": "symbols",
+      "tags": ["snow", "winter", "cold"]
+    },
+    {
+      "id": "cloud",
+      "title": "Cloud",
+      "content": "☁",
+      "category": "symbols",
+      "tags": ["cloud", "weather", "sky"]
+    },
+    {
+      "id": "umbrella",
+      "title": "Umbrella",
+      "content": "☂",
+      "category": "symbols",
+      "tags": ["umbrella", "rain", "weather"]
+    },
+    {
+      "id": "scissors",
+      "title": "Scissors",
+      "content": "✂",
+      "category": "symbols",
+      "tags": ["scissors", "cut", "tool"]
+    },
+    {
+      "id": "telephone",
+      "title": "Telephone",
+      "content": "☎",
+      "category": "symbols",
+      "tags": ["phone", "call", "telephone"]
+    },
+    {
+      "id": "hourglass",
+      "title": "Hourglass",
+      "content": "⌛",
+      "category": "symbols",
+      "tags": ["hourglass", "time", "wait"]
+    },
+    {
+      "id": "crown",
+      "title": "Crown",
+      "content": "♔",
+      "category": "symbols",
+      "tags": ["crown", "king", "royal"]
+    },
+    {
+      "id": "border-heart",
+      "title": "Heart Border",
+      "content": "♡♥♡♥♡♥♡♥♡♥♡♥♡",
+      "category": "borders",
+      "tags": ["border", "heart", "love", "divider"]
+    },
+    {
+      "id": "border-music",
+      "title": "Music Border",
+      "content": "♪♫♪♫♪♫♪♫♪♫♪♫♪",
+      "category": "borders",
+      "tags": ["border", "music", "notes", "divider"]
+    },
+    {
+      "id": "border-star-line",
+      "title": "Star Line Border",
+      "content": "★☆★☆★☆★☆★☆★☆★",
+      "category": "borders",
+      "tags": ["border", "star", "line", "divider"]
+    },
+    {
+      "id": "border-diamond",
+      "title": "Diamond Border",
+      "content": "◇◆◇◆◇◆◇◆◇◆◇◆◇",
+      "category": "borders",
+      "tags": ["border", "diamond", "divider"]
+    },
+    {
+      "id": "border-fancy",
+      "title": "Fancy Border",
+      "content": "╔═══════════════════════════════╗\n║  ✧･ﾟ: *✧･ﾟ:*  TEXT  *:･ﾟ✧*:･ﾟ✧ ║\n╚═══════════════════════════════╝",
+      "category": "borders",
+      "tags": ["border", "fancy", "sparkle", "frame"]
+    },
+    {
+      "id": "valentine-heart",
+      "title": "Valentine Heart",
+      "content": "    ❤️ ❤️\n  ❤️     ❤️\n ❤️  YOU  ❤️\n  ❤️     ❤️\n    ❤️ ❤️\n      ❤️",
+      "category": "text-art",
+      "tags": ["valentine", "heart", "love", "holiday"]
+    },
+    {
+      "id": "easter-bunny",
+      "title": "Easter Bunny",
+      "content": "  (\\_/)\n  (^.^)\n c(\")(\") 🥚",
+      "category": "text-art",
+      "tags": ["easter", "bunny", "egg", "holiday"]
+    },
+    {
+      "id": "new-year",
+      "title": "New Year",
+      "content": "★ HAPPY ★\n★  NEW  ★\n★ YEAR! ★\n  🎉🎊🎉",
+      "category": "text-art",
+      "tags": ["new year", "celebration", "holiday"]
+    },
+    {
+      "id": "fireworks",
+      "title": "Fireworks",
+      "content": "    *  .  *\n  . _\\|/_ .\n   * /|\\ *\n     ' '\n   .  *  .\n  *   *   *",
+      "category": "text-art",
+      "tags": ["fireworks", "celebration", "party"]
+    },
+    {
+      "id": "trophy",
+      "title": "Trophy",
+      "content": "   ___________\n  '._==_==_=_.'\n  .-\\:      /-.\n | (|:.     |) |\n  '-|:.     |-'\n    \\::.    /\n     '::. .'\n       ) (\n     _.' '._\n    '-------'",
+      "category": "text-art",
+      "tags": ["trophy", "winner", "prize"]
+    },
+    {
+      "id": "music-player",
+      "title": "Music Player",
+      "content": "┌─────────────┐\n│  ♫ Now Playing\n│  ───●───────\n│  ◄◄ ▐▐ ►►\n└─────────────┘",
+      "category": "text-art",
+      "tags": ["music", "player", "spotify"]
+    },
+    {
+      "id": "camera",
+      "title": "Camera",
+      "content": "  .--------.\n  |.-\"\"-.  |\n  ||    || |\n  |'-__-'  |\n  `--------'",
+      "category": "text-art",
+      "tags": ["camera", "photo", "picture"]
     }
   ]
 }
