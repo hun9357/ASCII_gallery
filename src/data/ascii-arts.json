@@ -1,0 +1,508 @@
+{
+  "arts": [
+    {
+      "id": "happy-cat",
+      "title": "Happy Cat",
+      "content": " /\\_/\\  \n( o.o ) \n > ^ <",
+      "category": "animals",
+      "tags": ["cat", "cute", "simple"]
+    },
+    {
+      "id": "sitting-cat",
+      "title": "Sitting Cat",
+      "content": "  /\\_/\\  \n ( o.o ) \n  > ^ <\n /|   |\\\n(_|   |_)",
+      "category": "animals",
+      "tags": ["cat", "cute"]
+    },
+    {
+      "id": "sleepy-cat",
+      "title": "Sleepy Cat",
+      "content": " /\\_/\\  \n( -.- ) \n > ^ <\n  ZzZ",
+      "category": "animals",
+      "tags": ["cat", "sleep", "cute"]
+    },
+    {
+      "id": "dog-face",
+      "title": "Dog Face",
+      "content": "  / \\__\n (    @\\___\n /         O\n/   (_____/\n/_____/   U",
+      "category": "animals",
+      "tags": ["dog", "cute"]
+    },
+    {
+      "id": "bunny",
+      "title": "Bunny",
+      "content": "(\\_/)\n(o.o)\n(> <)",
+      "category": "animals",
+      "tags": ["bunny", "rabbit", "cute", "simple"]
+    },
+    {
+      "id": "bunny-with-carrot",
+      "title": "Bunny with Carrot",
+      "content": " (\\_/)\n (o.o)\n ((\")(\") 🥕",
+      "category": "animals",
+      "tags": ["bunny", "rabbit", "carrot"]
+    },
+    {
+      "id": "bear-face",
+      "title": "Bear Face",
+      "content": "ʕ•ᴥ•ʔ",
+      "category": "animals",
+      "tags": ["bear", "cute", "simple", "kaomoji"]
+    },
+    {
+      "id": "koala",
+      "title": "Koala",
+      "content": "ʕ·ᴥ·ʔ",
+      "category": "animals",
+      "tags": ["koala", "cute", "simple"]
+    },
+    {
+      "id": "owl",
+      "title": "Owl",
+      "content": "  ___\n (o o)\n (  V  )\n/|   |\\\n  m m",
+      "category": "animals",
+      "tags": ["owl", "bird", "night"]
+    },
+    {
+      "id": "fish",
+      "title": "Fish",
+      "content": "><>",
+      "category": "animals",
+      "tags": ["fish", "simple", "small"]
+    },
+    {
+      "id": "fish-detailed",
+      "title": "Detailed Fish",
+      "content": "><(((('>",
+      "category": "animals",
+      "tags": ["fish", "detailed"]
+    },
+    {
+      "id": "butterfly",
+      "title": "Butterfly",
+      "content": "Ƹ̵̡Ӝ̵̨̄Ʒ",
+      "category": "animals",
+      "tags": ["butterfly", "pretty", "small"]
+    },
+    {
+      "id": "snail",
+      "title": "Snail",
+      "content": "@/\n/_/",
+      "category": "animals",
+      "tags": ["snail", "simple", "small"]
+    },
+    {
+      "id": "spider",
+      "title": "Spider",
+      "content": " /\\\n/  \\ /\\\n    X\n   / \\",
+      "category": "animals",
+      "tags": ["spider", "halloween"]
+    },
+    {
+      "id": "elephant",
+      "title": "Elephant",
+      "content": "   __     __\n  /  \\~~~/  \\\n (    ..    )\n  \\__/\\__/\n    |    |\n    |    |\n   _|    |_",
+      "category": "animals",
+      "tags": ["elephant", "large"]
+    },
+    {
+      "id": "heart-simple",
+      "title": "Simple Heart",
+      "content": "♥",
+      "category": "symbols",
+      "tags": ["heart", "love", "simple"]
+    },
+    {
+      "id": "heart-outline",
+      "title": "Heart Outline",
+      "content": "♡",
+      "category": "symbols",
+      "tags": ["heart", "love", "outline"]
+    },
+    {
+      "id": "heart-large",
+      "title": "Large Heart",
+      "content": "  ❤️❤️   ❤️❤️\n❤️    ❤️    ❤️\n❤️          ❤️\n  ❤️      ❤️\n    ❤️  ❤️\n      ❤️",
+      "category": "symbols",
+      "tags": ["heart", "love", "large"]
+    },
+    {
+      "id": "heart-ascii",
+      "title": "ASCII Heart",
+      "content": "  ***   ***\n *   * *   *\n*     *     *\n *         *\n  *       *\n   *     *\n    *   *\n     * *\n      *",
+      "category": "symbols",
+      "tags": ["heart", "love", "ascii", "large"]
+    },
+    {
+      "id": "star",
+      "title": "Star",
+      "content": "★",
+      "category": "symbols",
+      "tags": ["star", "simple"]
+    },
+    {
+      "id": "star-outline",
+      "title": "Star Outline",
+      "content": "☆",
+      "category": "symbols",
+      "tags": ["star", "outline"]
+    },
+    {
+      "id": "star-ascii",
+      "title": "ASCII Star",
+      "content": "    *\n   /|\\\n  / | \\\n *--+--*\n  \\ | /\n   \\|/\n    *",
+      "category": "symbols",
+      "tags": ["star", "ascii", "large"]
+    },
+    {
+      "id": "flower",
+      "title": "Flower",
+      "content": "  @@@\n @@@@@ \n  @@@\n   |\n  \\|/\n   |",
+      "category": "symbols",
+      "tags": ["flower", "nature", "pretty"]
+    },
+    {
+      "id": "rose",
+      "title": "Rose",
+      "content": "@}-,-'-,---",
+      "category": "symbols",
+      "tags": ["rose", "flower", "love"]
+    },
+    {
+      "id": "music-notes",
+      "title": "Music Notes",
+      "content": "♪♫♪",
+      "category": "symbols",
+      "tags": ["music", "notes", "simple"]
+    },
+    {
+      "id": "sun",
+      "title": "Sun",
+      "content": "  \\  |  /\n   \\ | /\n----( )----\n   / | \\\n  /  |  \\",
+      "category": "symbols",
+      "tags": ["sun", "weather", "nature"]
+    },
+    {
+      "id": "moon",
+      "title": "Moon",
+      "content": "☽",
+      "category": "symbols",
+      "tags": ["moon", "night", "simple"]
+    },
+    {
+      "id": "check-mark",
+      "title": "Check Mark",
+      "content": "✓",
+      "category": "symbols",
+      "tags": ["check", "done", "simple"]
+    },
+    {
+      "id": "check-box",
+      "title": "Check Box",
+      "content": "☑",
+      "category": "symbols",
+      "tags": ["check", "checkbox", "done"]
+    },
+    {
+      "id": "arrows",
+      "title": "Arrow Set",
+      "content": "← → ↑ ↓ ↔ ↕",
+      "category": "symbols",
+      "tags": ["arrow", "direction", "simple"]
+    },
+    {
+      "id": "shrug",
+      "title": "Shrug",
+      "content": "¯\\_(ツ)_/¯",
+      "category": "emojis",
+      "tags": ["shrug", "kaomoji", "popular"]
+    },
+    {
+      "id": "table-flip",
+      "title": "Table Flip",
+      "content": "(╯°□°)╯︵ ┻━┻",
+      "category": "emojis",
+      "tags": ["table", "flip", "angry", "popular"]
+    },
+    {
+      "id": "table-unflip",
+      "title": "Table Unflip",
+      "content": "┬─┬ノ( º _ ºノ)",
+      "category": "emojis",
+      "tags": ["table", "calm", "popular"]
+    },
+    {
+      "id": "lenny-face",
+      "title": "Lenny Face",
+      "content": "( ͡° ͜ʖ ͡°)",
+      "category": "emojis",
+      "tags": ["lenny", "face", "popular"]
+    },
+    {
+      "id": "disapproval",
+      "title": "Look of Disapproval",
+      "content": "ಠ_ಠ",
+      "category": "emojis",
+      "tags": ["disapproval", "stare", "popular"]
+    },
+    {
+      "id": "happy-face",
+      "title": "Happy Face",
+      "content": "(◕‿◕)",
+      "category": "emojis",
+      "tags": ["happy", "smile", "cute"]
+    },
+    {
+      "id": "sad-face",
+      "title": "Sad Face",
+      "content": "(╥﹏╥)",
+      "category": "emojis",
+      "tags": ["sad", "cry", "tears"]
+    },
+    {
+      "id": "excited",
+      "title": "Excited",
+      "content": "ヽ(>∀<☆)ノ",
+      "category": "emojis",
+      "tags": ["excited", "happy", "celebration"]
+    },
+    {
+      "id": "magic",
+      "title": "Magic Sparkles",
+      "content": "(ノ◕ヮ◕)ノ*:・゚✧",
+      "category": "emojis",
+      "tags": ["magic", "sparkle", "cute"]
+    },
+    {
+      "id": "fighting",
+      "title": "Fighting!",
+      "content": "(ง •̀_•́)ง",
+      "category": "emojis",
+      "tags": ["fight", "strong", "motivation"]
+    },
+    {
+      "id": "confused",
+      "title": "Confused",
+      "content": "(⊙_⊙)?",
+      "category": "emojis",
+      "tags": ["confused", "question"]
+    },
+    {
+      "id": "wink",
+      "title": "Wink",
+      "content": "(^_~)",
+      "category": "emojis",
+      "tags": ["wink", "cute", "simple"]
+    },
+    {
+      "id": "love-eyes",
+      "title": "Love Eyes",
+      "content": "(♥‿♥)",
+      "category": "emojis",
+      "tags": ["love", "heart", "cute"]
+    },
+    {
+      "id": "border-simple",
+      "title": "Simple Border",
+      "content": "════════════════",
+      "category": "borders",
+      "tags": ["border", "line", "simple"]
+    },
+    {
+      "id": "border-double",
+      "title": "Double Line Border",
+      "content": "╔══════════════╗\n║              ║\n╚══════════════╝",
+      "category": "borders",
+      "tags": ["border", "box", "frame"]
+    },
+    {
+      "id": "border-single",
+      "title": "Single Line Border",
+      "content": "┌──────────────┐\n│              │\n└──────────────┘",
+      "category": "borders",
+      "tags": ["border", "box", "frame"]
+    },
+    {
+      "id": "border-rounded",
+      "title": "Rounded Border",
+      "content": "╭──────────────╮\n│              │\n╰──────────────╯",
+      "category": "borders",
+      "tags": ["border", "box", "rounded"]
+    },
+    {
+      "id": "border-stars",
+      "title": "Star Border",
+      "content": "★═══════════════★\n║               ║\n★═══════════════★",
+      "category": "borders",
+      "tags": ["border", "stars", "decorative"]
+    },
+    {
+      "id": "divider-wave",
+      "title": "Wave Divider",
+      "content": "〰〰〰〰〰〰〰〰〰",
+      "category": "borders",
+      "tags": ["divider", "wave", "line"]
+    },
+    {
+      "id": "divider-dots",
+      "title": "Dot Divider",
+      "content": "• • • • • • • • •",
+      "category": "borders",
+      "tags": ["divider", "dots", "line"]
+    },
+    {
+      "id": "divider-sparkle",
+      "title": "Sparkle Divider",
+      "content": "✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦",
+      "category": "borders",
+      "tags": ["divider", "sparkle", "pretty"]
+    },
+    {
+      "id": "divider-arrow",
+      "title": "Arrow Divider",
+      "content": ">>-->-->-->-->-->>",
+      "category": "borders",
+      "tags": ["divider", "arrow", "direction"]
+    },
+    {
+      "id": "divider-flower",
+      "title": "Flower Divider",
+      "content": "❀ ❁ ❀ ❁ ❀ ❁ ❀ ❁ ❀",
+      "category": "borders",
+      "tags": ["divider", "flower", "pretty"]
+    },
+    {
+      "id": "welcome-banner",
+      "title": "Welcome Banner",
+      "content": "╔═══════════════════╗\n║     WELCOME!      ║\n╚═══════════════════╝",
+      "category": "text-art",
+      "tags": ["welcome", "banner", "greeting"]
+    },
+    {
+      "id": "hello-banner",
+      "title": "Hello Banner",
+      "content": "██╗  ██╗███████╗██╗     ██╗      ██████╗ \n██║  ██║██╔════╝██║     ██║     ██╔═══██╗\n███████║█████╗  ██║     ██║     ██║   ██║\n██╔══██║██╔══╝  ██║     ██║     ██║   ██║\n██║  ██║███████╗███████╗███████╗╚██████╔╝\n╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝",
+      "category": "text-art",
+      "tags": ["hello", "banner", "large"]
+    },
+    {
+      "id": "cool-text",
+      "title": "COOL Text",
+      "content": " ██████╗ ██████╗  ██████╗ ██╗     \n██╔════╝██╔═══██╗██╔═══██╗██║     \n██║     ██║   ██║██║   ██║██║     \n██║     ██║   ██║██║   ██║██║     \n╚██████╗╚██████╔╝╚██████╔╝███████╗\n ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝",
+      "category": "text-art",
+      "tags": ["cool", "banner", "large"]
+    },
+    {
+      "id": "love-text",
+      "title": "LOVE Text",
+      "content": "██╗      ██████╗ ██╗   ██╗███████╗\n██║     ██╔═══██╗██║   ██║██╔════╝\n██║     ██║   ██║██║   ██║█████╗  \n██║     ██║   ██║╚██╗ ██╔╝██╔══╝  \n███████╗╚██████╔╝ ╚████╔╝ ███████╗\n╚══════╝ ╚═════╝   ╚═══╝  ╚══════╝",
+      "category": "text-art",
+      "tags": ["love", "banner", "large"]
+    },
+    {
+      "id": "sword",
+      "title": "Sword",
+      "content": "    /|\n   / |\n  /  |\n /   |\n/----+\n\\    |\n \\   |\n  \\  |\n   \\ |\n    \\|",
+      "category": "text-art",
+      "tags": ["sword", "weapon", "gaming"]
+    },
+    {
+      "id": "coffee",
+      "title": "Coffee Cup",
+      "content": "  )  (\n ( )  )\n  ) ( (\n.-\"\"\"\"\"\"-.   \n|        |]\n \\      /\n  `----'",
+      "category": "text-art",
+      "tags": ["coffee", "drink", "morning"]
+    },
+    {
+      "id": "computer",
+      "title": "Computer",
+      "content": " ___________\n|  _______  |\n| |       | |\n| |_______| |\n|___________|\n    _|_|_",
+      "category": "text-art",
+      "tags": ["computer", "tech", "screen"]
+    },
+    {
+      "id": "house",
+      "title": "House",
+      "content": "     /\\\n    /  \\\n   /    \\\n  /______\\\n  |  __  |\n  | |  | |\n  | |__| |\n  |______|",
+      "category": "text-art",
+      "tags": ["house", "home", "building"]
+    },
+    {
+      "id": "tree",
+      "title": "Tree",
+      "content": "    *\n   /|\\\n  / | \\\n /  |  \\\n/___|___\\\n    |\n    |",
+      "category": "text-art",
+      "tags": ["tree", "nature", "christmas"]
+    },
+    {
+      "id": "cake",
+      "title": "Birthday Cake",
+      "content": "     )  )\n    (  (\n  iiiiiiiii\n |:H:a:p:p:y:|\n |:Birthday:|\n |___________|",
+      "category": "text-art",
+      "tags": ["cake", "birthday", "celebration"]
+    },
+    {
+      "id": "thumbs-up",
+      "title": "Thumbs Up",
+      "content": "   ___\n  / _ \\\n | / \\ |\n | | | |\n | \\_/ |\n  \\___/",
+      "category": "text-art",
+      "tags": ["thumbs", "approve", "good"]
+    },
+    {
+      "id": "skull",
+      "title": "Skull",
+      "content": "  _____\n /     \\\n| () () |\n \\  ^  /\n  |||||",
+      "category": "text-art",
+      "tags": ["skull", "halloween", "spooky"]
+    },
+    {
+      "id": "ghost",
+      "title": "Ghost",
+      "content": "   .-.\n  (o o)\n  | O |\n  |   |\n  '~~~'",
+      "category": "text-art",
+      "tags": ["ghost", "halloween", "spooky", "cute"]
+    },
+    {
+      "id": "pumpkin",
+      "title": "Pumpkin",
+      "content": "   ___\n  /   \\\n | o o |\n |  >  |\n | \\_/ |\n  \\___/",
+      "category": "text-art",
+      "tags": ["pumpkin", "halloween", "autumn"]
+    },
+    {
+      "id": "snowman",
+      "title": "Snowman",
+      "content": "   _\n  (_)\n (o o)\n/(   )\\\n ( : )\n  \" \"",
+      "category": "text-art",
+      "tags": ["snowman", "winter", "christmas"]
+    },
+    {
+      "id": "christmas-tree",
+      "title": "Christmas Tree",
+      "content": "    ★\n   /|\\\n  / | \\\n /  |  \\\n/   |   \\\n---------\n    |\n   [_]",
+      "category": "text-art",
+      "tags": ["christmas", "tree", "holiday"]
+    },
+    {
+      "id": "gift-box",
+      "title": "Gift Box",
+      "content": "  ______\n /      \\\n|  ----  |\n| |    | |\n| |____| |\n|________|",
+      "category": "text-art",
+      "tags": ["gift", "present", "birthday", "christmas"]
+    },
+    {
+      "id": "rocket",
+      "title": "Rocket",
+      "content": "   /\\\n  /  \\\n |    |\n |    |\n |    |\n/|    |\\\n||    ||\n  \\||/\n   ||\n  /||\\\n   \"\"",
+      "category": "text-art",
+      "tags": ["rocket", "space", "launch"]
+    },
+    {
+      "id": "gamepad",
+      "title": "Gamepad",
+      "content": " _____________\n|  _________  |\n| |    _    | |\n| |  _| |_  | |\n| | |_   _| | |\n| |   |_|   | |\n|_|_________|_|",
+      "category": "text-art",
+      "tags": ["game", "controller", "gaming"]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "slug": "animals",
+      "name": "Animals",
+      "icon": "🐾",
+      "description": "Cute ASCII art of cats, dogs, bunnies, and more animals",
+      "seoTitle": "Animal ASCII Art - Copy & Paste",
+      "seoDescription": "Cute ASCII art animals ready to copy and paste. Cats, dogs, bunnies, bears and more for Discord, messages, and social media."
+    },
+    {
+      "slug": "symbols",
+      "name": "Symbols",
+      "icon": "❤️",
+      "description": "Hearts, stars, arrows, and special characters",
+      "seoTitle": "ASCII Symbols - Copy & Paste",
+      "seoDescription": "Copy ASCII symbols instantly. Hearts, stars, arrows, checkmarks, and decorative characters for any platform."
+    },
+    {
+      "slug": "emojis",
+      "name": "Emoticons",
+      "icon": "😊",
+      "description": "Kaomoji, text faces, and emoticons",
+      "seoTitle": "ASCII Emoticons & Kaomoji - Copy & Paste",
+      "seoDescription": "Express yourself with ASCII emoticons! Copy kaomoji, text faces like shrug and lenny face for Discord and messages."
+    },
+    {
+      "slug": "borders",
+      "name": "Borders",
+      "icon": "📦",
+      "description": "Decorative borders, dividers, and frames",
+      "seoTitle": "ASCII Borders & Dividers - Copy & Paste",
+      "seoDescription": "Decorative ASCII borders and dividers for messages and documents. Copy beautiful text frames and lines instantly."
+    },
+    {
+      "slug": "text-art",
+      "name": "Text Art",
+      "icon": "🎨",
+      "description": "Banners, objects, and creative text designs",
+      "seoTitle": "ASCII Text Art - Copy & Paste",
+      "seoDescription": "Creative ASCII text art and banners. Copy stylish text designs for Discord, forums, and social media."
+    }
+  ]
+}

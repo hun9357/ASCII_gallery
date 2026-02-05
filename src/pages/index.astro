@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AsciiCard from '../components/AsciiCard.astro';
+import SearchBar from '../components/SearchBar.astro';
+import CategoryFilter from '../components/CategoryFilter.astro';
+import asciiArts from '../data/ascii-arts.json';
+
+const title = "ASCII Art Copy Paste - Free Text Art Collection";
+const description = "Copy and paste ASCII art instantly. Free collection of text art, symbols, animals, borders, and emojis for Discord, social media, and messaging. One-click copy!";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="text-center mb-10">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">ASCII Art Gallery</h1>
+    <p class="text-lg text-gray-600 mb-6">Copy & paste ASCII art instantly. Free collection for Discord, social media, and messaging.</p>
+
+    <div class="max-w-xl mx-auto">
+      <SearchBar placeholder="Search ASCII art (cat, heart, shrug...)" />
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <CategoryFilter />
+
+  <!-- Ad Slot Placeholder -->
+  <div class="bg-gray-100 border border-dashed border-gray-300 rounded-lg p-4 mb-8 text-center text-gray-400 text-sm">
+    Ad Space (728x90)
+  </div>
+
+  <!-- ASCII Art Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {asciiArts.arts.map((art) => (
+      <div data-searchable={`${art.title} ${art.category} ${art.tags.join(' ')}`}>
+        <AsciiCard
+          id={art.id}
+          title={art.title}
+          content={art.content}
+          category={art.category}
+          tags={art.tags}
+        />
+      </div>
+    ))}
+  </div>
+
+  <!-- Ad Slot Placeholder -->
+  <div class="bg-gray-100 border border-dashed border-gray-300 rounded-lg p-4 mt-8 text-center text-gray-400 text-sm">
+    Ad Space (728x90)
+  </div>
+
+  <!-- SEO Content -->
+  <section class="mt-12 prose prose-gray max-w-none">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">What is ASCII Art?</h2>
+    <p class="text-gray-600 mb-4">
+      ASCII art is a graphic design technique that uses text characters to create visual art.
+      These text-based images can be easily copied and pasted into any platform that supports text,
+      including Discord, Twitter, Instagram bios, messaging apps, and code comments.
+    </p>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">How to Use ASCII Art</h2>
+    <ol class="list-decimal list-inside text-gray-600 space-y-2">
+      <li>Browse our collection or use the search bar to find ASCII art you like</li>
+      <li>Click the "Copy" button to copy the ASCII art to your clipboard</li>
+      <li>Paste it anywhere using Ctrl+V (Windows) or Cmd+V (Mac)</li>
+    </ol>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Popular ASCII Art Categories</h2>
+    <ul class="list-disc list-inside text-gray-600 space-y-2">
+      <li><strong>Animals</strong> - Cats, dogs, bunnies, and more cute creatures</li>
+      <li><strong>Symbols</strong> - Hearts, stars, arrows, and special characters</li>
+      <li><strong>Emoticons</strong> - Kaomoji and text faces like shrug and lenny face</li>
+      <li><strong>Borders</strong> - Decorative frames and dividers for messages</li>
+      <li><strong>Text Art</strong> - Banners, objects, and creative designs</li>
+    </ul>
+  </section>
+</BaseLayout>

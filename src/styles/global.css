@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Custom fonts for ASCII art display */
+@layer base {
+  html {
+    font-family: system-ui, sans-serif;
+  }
+
+  pre, code, .ascii-content {
+    font-family: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .ascii-content {
+    white-space: pre;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+}

@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+}
+
+const { title, description, canonicalUrl } = Astro.props;
+const siteUrl = 'https://ascii-art-gallery.com';
+const fullCanonical = canonicalUrl || Astro.url.href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={fullCanonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullCanonical} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- AdSense placeholder - replace with actual code after approval -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXX" crossorigin="anonymous"></script> -->
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+      <nav class="max-w-6xl mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <a href="/" class="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+            ASCII Art Gallery
+          </a>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="/category/animals" class="text-gray-600 hover:text-gray-900">Animals</a>
+            <a href="/category/symbols" class="text-gray-600 hover:text-gray-900">Symbols</a>
+            <a href="/category/emojis" class="text-gray-600 hover:text-gray-900">Emoticons</a>
+            <a href="/category/borders" class="text-gray-600 hover:text-gray-900">Borders</a>
+            <a href="/category/text-art" class="text-gray-600 hover:text-gray-900">Text Art</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="text-center text-gray-500 text-sm">
+          <p>&copy; 2025 ASCII Art Gallery. Free to copy and use.</p>
+          <p class="mt-2">
+            <a href="/about" class="hover:text-gray-700">About</a>
+            <span class="mx-2">·</span>
+            <a href="/privacy" class="hover:text-gray-700">Privacy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Copy functionality script -->
+    <script>
+      document.addEventListener('click', async (e) => {
+        const target = e.target as HTMLElement;
+        if (target.classList.contains('copy-btn') || target.closest('.copy-btn')) {
+          const btn = target.classList.contains('copy-btn') ? target : target.closest('.copy-btn') as HTMLElement;
+          const content = btn.dataset.content;
+
+          if (content) {
+            try {
+              await navigator.clipboard.writeText(content);
+              const originalText = btn.textContent;
+              btn.textContent = 'Copied!';
+              btn.classList.add('bg-green-500');
+              btn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+
+              setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-green-500');
+                btn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+              }, 2000);
+            } catch (err) {
+              console.error('Failed to copy:', err);
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

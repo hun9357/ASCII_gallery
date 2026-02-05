@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "About ASCII Art Gallery";
+const description = "Learn about ASCII Art Gallery - a free collection of copy-paste ASCII art for Discord, social media, and messaging.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">About ASCII Art Gallery</h1>
+
+    <div class="prose prose-gray max-w-none">
+      <p class="text-lg text-gray-600 mb-6">
+        ASCII Art Gallery is a free collection of text-based art that you can copy and paste anywhere.
+        Our mission is to make ASCII art accessible and easy to use for everyone.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">What We Offer</h2>
+      <ul class="list-disc list-inside text-gray-600 space-y-2">
+        <li>Hundreds of free ASCII art designs</li>
+        <li>One-click copy functionality</li>
+        <li>Organized categories for easy browsing</li>
+        <li>Mobile-friendly interface</li>
+        <li>No registration required</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Use Cases</h2>
+      <p class="text-gray-600 mb-4">
+        Our ASCII art can be used in many places:
+      </p>
+      <ul class="list-disc list-inside text-gray-600 space-y-2">
+        <li>Discord servers and messages</li>
+        <li>Twitter/X posts and bios</li>
+        <li>Instagram bios</li>
+        <li>WhatsApp and Telegram messages</li>
+        <li>GitHub README files</li>
+        <li>Code comments</li>
+        <li>Email signatures</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Free to Use</h2>
+      <p class="text-gray-600 mb-4">
+        All ASCII art in our gallery is free to use for personal and commercial purposes.
+        No attribution required, though we appreciate if you share our site with others!
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Contact</h2>
+      <p class="text-gray-600">
+        Have suggestions or want to contribute ASCII art? We'd love to hear from you.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
