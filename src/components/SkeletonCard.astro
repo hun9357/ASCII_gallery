@@ -1,0 +1,43 @@
+---
+// Skeleton loading card that matches the AsciiCard design
+---
+
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden animate-pulse">
+  <div class="p-4">
+    <!-- Title skeleton -->
+    <div class="flex items-start justify-between mb-3">
+      <div class="h-5 bg-gray-200 dark:bg-gray-700 rounded w-32 flex-1"></div>
+      <div class="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded"></div>
+    </div>
+
+    <!-- ASCII content skeleton -->
+    <div class="bg-gray-50 dark:bg-gray-900 rounded-md p-4 mb-4">
+      <div class="space-y-2">
+        <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-24"></div>
+        <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-32"></div>
+        <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-28"></div>
+      </div>
+    </div>
+
+    <!-- Footer skeleton -->
+    <div class="flex items-center justify-between">
+      <div class="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-20"></div>
+      <div class="h-8 bg-gray-200 dark:bg-gray-700 rounded-md w-16"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>

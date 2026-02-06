@@ -1,0 +1,85 @@
+---
+import asciiArts from '../data/ascii-arts.json';
+
+interface Props {
+  selectedTags?: string[];
+}
+
+const { selectedTags = [] } = Astro.props;
+
+// Extract all unique tags from the arts collection
+const allTags = [...new Set(asciiArts.arts.flatMap(art => art.tags))].sort();
+---
+
+<div class="mb-8">
+  <div class="flex items-center justify-between mb-3">
+    <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Filter by Tags</h2>
+    {selectedTags.length > 0 && (
+      <a
+        href="/"
+        class="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+      >
+        Clear Filters
+      </a>
+    )}
+  </div>
+
+  <div class="flex flex-wrap gap-2" id="tag-filter-container">
+    {allTags.map((tag) => {
+      const isSelected = selectedTags.includes(tag);
+      return (
+        <button
+          class:list={[
+            "tag-pill px-3 py-1.5 rounded-full text-sm font-medium transition-colors",
+            isSelected
+              ? "bg-blue-500 text-white hover:bg-blue-600"
+              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+          ]}
+          data-tag={tag}
+          data-selected={isSelected}
+        >
+          {tag}
+        </button>
+      );
+    })}
+  </div>
+
+  {selectedTags.length > 0 && (
+    <div class="mt-3 text-sm text-gray-600 dark:text-gray-400">
+      Filtering by tags:
+      <span class="font-medium">{selectedTags.join(', ')}</span>
+    </div>
+  )}
+</div>
+
+<script>
+  // Handle tag filtering with URL query parameters
+  const tagPills = document.querySelectorAll('.tag-pill');
+
+  tagPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const tag = pill.getAttribute('data-tag');
+      if (!tag) return;
+
+      const url = new URL(window.location.href);
+      const currentTags = url.searchParams.get('tags')?.split(',').filter(Boolean) || [];
+
+      // Toggle tag selection
+      const tagIndex = currentTags.indexOf(tag);
+      if (tagIndex > -1) {
+        currentTags.splice(tagIndex, 1);
+      } else {
+        currentTags.push(tag);
+      }
+
+      // Update URL
+      if (currentTags.length > 0) {
+        url.searchParams.set('tags', currentTags.join(','));
+      } else {
+        url.searchParams.delete('tags');
+      }
+
+      window.location.href = url.toString();
+    });
+  });
+</script>

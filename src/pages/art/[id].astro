@@ -120,7 +120,7 @@ const schema = {
       </div>
 
       <!-- Where to Use -->
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
         <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Where to Use {art.title} ASCII Art</h2>
         <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
           <li><strong>Discord</strong> - Server messages, status, and bios</li>
@@ -130,6 +130,22 @@ const schema = {
           <li><strong>GitHub</strong> - README files and code comments</li>
           <li><strong>Email</strong> - Fun signatures</li>
         </ul>
+      </div>
+
+      <!-- Browse by Tags -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Browse Similar ASCII Art</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Click a tag to find more ASCII art like this:</p>
+        <div class="flex flex-wrap gap-2">
+          {art.tags.map((tag) => (
+            <a
+              href={`/?tags=${tag}`}
+              class="px-3 py-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 rounded-lg text-sm font-medium transition-colors"
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
 
@@ -148,10 +164,16 @@ const schema = {
             </dd>
           </div>
           <div>
-            <dt class="text-gray-500 dark:text-gray-400">Tags</dt>
+            <dt class="text-gray-500 dark:text-gray-400 mb-1">Related Tags</dt>
             <dd class="flex flex-wrap gap-1 mt-1">
               {art.tags.map((tag) => (
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs">{tag}</span>
+                <a
+                  href={`/?tags=${tag}`}
+                  class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300 rounded text-xs transition-colors"
+                  title={`View all ${tag} ASCII art`}
+                >
+                  {tag}
+                </a>
               ))}
             </dd>
           </div>

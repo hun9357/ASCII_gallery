@@ -3,10 +3,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import AsciiCard from '../components/AsciiCard.astro';
 import SearchBar from '../components/SearchBar.astro';
 import CategoryFilter from '../components/CategoryFilter.astro';
+import TagFilter from '../components/TagFilter.astro';
+import SkeletonCard from '../components/SkeletonCard.astro';
 import asciiArts from '../data/ascii-arts.json';
 
 const title = "ASCII Art Copy Paste - Free Text Art Collection";
 const description = "Copy and paste ASCII art instantly. Free collection of text art, symbols, animals, borders, and emojis for Discord, social media, and messaging. One-click copy!";
+
+// Get selected tags from URL query parameters
+const selectedTags = Astro.url.searchParams.get('tags')?.split(',').filter(Boolean) || [];
+
+// Filter arts by selected tags (AND logic)
+let filteredArts = asciiArts.arts;
+if (selectedTags.length > 0) {
+  filteredArts = asciiArts.arts.filter(art =>
+    selectedTags.every(tag => art.tags.includes(tag))
+  );
+}
+
+// Initial load: show first 24 items
+const initialLoadCount = 24;
+const initialArts = filteredArts.slice(0, initialLoadCount);
+const hasMore = filteredArts.length > initialLoadCount;
 
 // Create ItemList schema for the homepage
 const siteUrl = 'https://asciiartgallery.netlify.app';
@@ -66,15 +84,28 @@ const schema = {
   <!-- Category Filter -->
   <CategoryFilter />
 
+  <!-- Tag Filter -->
+  <TagFilter selectedTags={selectedTags} />
+
   <!-- Ad Slot Placeholder -->
   <div class="bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 mb-8 text-center text-gray-400 dark:text-gray-500 text-sm">
     Ad Space (728x90)
   </div>
 
+  <!-- Results count and empty state -->
+  <div class="mb-4">
+    <p class="text-gray-600 dark:text-gray-400 text-sm">
+      <span id="results-count" class="font-medium">{filteredArts.length}</span> results found
+    </p>
+  </div>
+
+  <!-- Empty state container -->
+  <div id="no-results-message"></div>
+
   <!-- ASCII Art Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {asciiArts.arts.map((art) => (
-      <div data-searchable={`${art.title} ${art.category} ${art.tags.join(' ')}`}>
+  <div id="art-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {initialArts.map((art) => (
+      <div class="art-card" data-searchable={`${art.title} ${art.category} ${art.tags.join(' ')}`}>
         <AsciiCard
           id={art.id}
           title={art.title}
@@ -85,6 +116,18 @@ const schema = {
       </div>
     ))}
   </div>
+
+  <!-- Loading indicator -->
+  {hasMore && (
+    <div id="loading-indicator" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      {Array.from({ length: 3 }).map(() => (
+        <SkeletonCard />
+      ))}
+    </div>
+  )}
+
+  <!-- Sentinel element for intersection observer -->
+  {hasMore && <div id="load-more-sentinel" class="h-10"></div>}
 
   <!-- Ad Slot Placeholder -->
   <div class="bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 mt-8 text-center text-gray-400 dark:text-gray-500 text-sm">
@@ -117,3 +160,186 @@ const schema = {
     </ul>
   </section>
 </BaseLayout>
+
+<script define:vars={{ filteredArts, initialLoadCount }}>
+  // Lazy loading with Intersection Observer
+  let currentLoadedCount = initialLoadCount;
+  const loadMoreCount = 12;
+  const artGrid = document.getElementById('art-grid');
+  const loadingIndicator = document.getElementById('loading-indicator');
+  const sentinel = document.getElementById('load-more-sentinel');
+
+  if (sentinel && artGrid) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && currentLoadedCount < filteredArts.length) {
+            // Show loading indicator
+            if (loadingIndicator) {
+              loadingIndicator.style.display = 'grid';
+            }
+
+            // Simulate loading delay for better UX
+            setTimeout(() => {
+              const nextArts = filteredArts.slice(
+                currentLoadedCount,
+                currentLoadedCount + loadMoreCount
+              );
+
+              nextArts.forEach((art) => {
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'art-card';
+                cardDiv.setAttribute('data-searchable', `${art.title} ${art.category} ${art.tags.join(' ')}`);
+
+                // Create the card HTML
+                cardDiv.innerHTML = `
+                  <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="p-4">
+                      <div class="flex items-start justify-between mb-3">
+                        <h3 class="font-medium text-gray-900 dark:text-gray-100 flex-1">
+                          <a href="/art/${art.id}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            ${art.title}
+                          </a>
+                        </h3>
+                        <button class="favorite-btn w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-gray-100 dark:hover:bg-gray-700" data-art-id="${art.id}" aria-label="Add to favorites">
+                          <svg class="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="bg-gray-50 dark:bg-gray-900 rounded-md p-4 mb-4 overflow-x-auto">
+                        <pre class="ascii-content text-sm text-gray-800 dark:text-gray-200 select-all">${art.content}</pre>
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <div class="flex flex-wrap gap-1">
+                          <a href="/category/${art.category}" class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+                            ${art.category}
+                          </a>
+                        </div>
+                        <button class="copy-btn px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600 transition-colors cursor-pointer" data-content="${art.content.replace(/"/g, '&quot;')}">
+                          Copy
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                `;
+
+                artGrid.appendChild(cardDiv);
+              });
+
+              currentLoadedCount += nextArts.length;
+
+              // Hide loading indicator
+              if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+              }
+
+              // Remove sentinel if all loaded
+              if (currentLoadedCount >= filteredArts.length && sentinel) {
+                sentinel.remove();
+                observer.disconnect();
+              }
+
+              // Re-initialize copy and favorite buttons for new cards
+              initializeCopyButtons();
+              initializeFavoriteButtons();
+
+              // Update search results to include newly loaded cards
+              if (typeof (window as any).updateSearchResults === 'function') {
+                const searchInput = document.getElementById('search-input') as HTMLInputElement;
+                if (searchInput) {
+                  (window as any).updateSearchResults(searchInput.value.toLowerCase().trim());
+                }
+              }
+            }, 300);
+          }
+        });
+      },
+      {
+        rootMargin: '100px',
+      }
+    );
+
+    observer.observe(sentinel);
+  }
+
+  // Initialize copy buttons (from existing script)
+  function initializeCopyButtons() {
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      const newBtn = btn.cloneNode(true);
+      btn.replaceWith(newBtn);
+
+      newBtn.addEventListener('click', async () => {
+        const content = newBtn.getAttribute('data-content');
+        if (!content) return;
+
+        try {
+          await navigator.clipboard.writeText(content);
+          const originalText = newBtn.textContent;
+          newBtn.textContent = 'Copied!';
+          newBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+          newBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+
+          setTimeout(() => {
+            newBtn.textContent = originalText;
+            newBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+            newBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  }
+
+  // Initialize favorite buttons (from existing script)
+  function initializeFavoriteButtons() {
+    document.querySelectorAll('.favorite-btn').forEach((btn) => {
+      const artId = btn.getAttribute('data-art-id');
+      if (!artId) return;
+
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const isFavorite = favorites.includes(artId);
+
+      const svg = btn.querySelector('svg');
+      if (svg) {
+        if (isFavorite) {
+          svg.setAttribute('fill', 'currentColor');
+          svg.classList.add('text-red-500');
+        } else {
+          svg.setAttribute('fill', 'none');
+          svg.classList.remove('text-red-500');
+        }
+      }
+
+      const newBtn = btn.cloneNode(true);
+      btn.replaceWith(newBtn);
+
+      newBtn.addEventListener('click', () => {
+        const currentFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        const index = currentFavorites.indexOf(artId);
+        const newSvg = newBtn.querySelector('svg');
+
+        if (index > -1) {
+          currentFavorites.splice(index, 1);
+          if (newSvg) {
+            newSvg.setAttribute('fill', 'none');
+            newSvg.classList.remove('text-red-500');
+          }
+        } else {
+          currentFavorites.push(artId);
+          if (newSvg) {
+            newSvg.setAttribute('fill', 'currentColor');
+            newSvg.classList.add('text-red-500');
+          }
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(currentFavorites));
+      });
+    });
+  }
+
+  // Initial setup
+  initializeCopyButtons();
+  initializeFavoriteButtons();
+</script>

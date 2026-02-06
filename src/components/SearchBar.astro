@@ -27,20 +27,61 @@ const { placeholder = "Search ASCII art..." } = Astro.props;
 
 <script>
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
-  const artCards = document.querySelectorAll('[data-searchable]');
+  const resultsCount = document.getElementById('results-count');
+  const noResultsMessage = document.getElementById('no-results-message');
 
   let debounceTimer: number;
+
+  function updateResultsDisplay(query: string) {
+    // Re-query all cards to include lazy-loaded ones
+    const artCards = document.querySelectorAll('[data-searchable]');
+    let visibleCount = 0;
+
+    artCards.forEach((card) => {
+      const searchText = card.getAttribute('data-searchable')?.toLowerCase() || '';
+      const matches = query === '' || searchText.includes(query);
+      (card as HTMLElement).style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    // Update results count
+    if (resultsCount) {
+      resultsCount.textContent = visibleCount.toString();
+    }
+
+    // Show empty state message if no results
+    if (noResultsMessage) {
+      if (visibleCount === 0 && query !== '') {
+        noResultsMessage.innerHTML = `
+          <div class="mt-8 text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-gray-100">No results found</h3>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              No ASCII art found for "<strong>${query}</strong>". Try another search term.
+            </p>
+          </div>
+        `;
+        noResultsMessage.style.display = 'block';
+      } else {
+        noResultsMessage.innerHTML = '';
+        noResultsMessage.style.display = 'none';
+      }
+    }
+  }
 
   searchInput?.addEventListener('input', (e) => {
     clearTimeout(debounceTimer);
     debounceTimer = window.setTimeout(() => {
       const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
-
-      artCards.forEach((card) => {
-        const searchText = card.getAttribute('data-searchable')?.toLowerCase() || '';
-        const matches = query === '' || searchText.includes(query);
-        (card as HTMLElement).style.display = matches ? '' : 'none';
-      });
+      updateResultsDisplay(query);
     }, 200);
   });
+
+  // Initial display update
+  updateResultsDisplay('');
+
+  // Make updateResultsDisplay available globally for lazy loading to trigger
+  (window as any).updateSearchResults = updateResultsDisplay;
 </script>
