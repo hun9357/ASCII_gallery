@@ -107,6 +107,19 @@ const popularSearches = ['cat', 'heart', 'shrug', 'table flip', 'star', 'smile']
     debounceTimer = window.setTimeout(() => {
       const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
       updateResultsDisplay(query);
+
+      // Track search event in GA4 (only for non-empty queries)
+      if (query && typeof gtag === 'function') {
+        const artCards = document.querySelectorAll('[data-searchable]');
+        let visibleCount = 0;
+        artCards.forEach((card) => {
+          if ((card as HTMLElement).style.display !== 'none') visibleCount++;
+        });
+        gtag('event', 'search', {
+          'search_term': query,
+          'results_count': visibleCount
+        });
+      }
     }, 200);
   });
 

@@ -64,6 +64,15 @@ const schemaMarkup = schema || defaultSchema;
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
+    <!-- Google Analytics 4 -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-01XHTZ2N2E"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-01XHTZ2N2E');
+    </script>
+
     <!-- AdSense placeholder - replace with actual code after approval -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXX" crossorigin="anonymous"></script> -->
 
@@ -139,6 +148,16 @@ const schemaMarkup = schema || defaultSchema;
           if (content) {
             try {
               await navigator.clipboard.writeText(content);
+
+              // Track copy event in GA4
+              if (typeof gtag === 'function') {
+                const artId = btn.closest('[data-art-id]')?.getAttribute('data-art-id') ||
+                              btn.closest('article')?.querySelector('a')?.getAttribute('href')?.split('/').pop() || 'unknown';
+                gtag('event', 'copy_art', {
+                  'art_id': artId,
+                  'content_length': content.length
+                });
+              }
 
               // Show checkmark if available, otherwise change text
               const copyText = btn.querySelector('.copy-text');

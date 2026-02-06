@@ -118,6 +118,14 @@ const iconSize = sizeClasses[size];
       if (artId) {
         const isFav = toggleFavorite(artId);
         updateButtonState(button, isFav);
+
+        // Track favorite event in GA4
+        if (typeof gtag === 'function') {
+          gtag('event', 'favorite_art', {
+            'art_id': artId,
+            'action': isFav ? 'add' : 'remove'
+          });
+        }
       }
     }
   });
