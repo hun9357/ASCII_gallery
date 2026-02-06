@@ -1,0 +1,131 @@
+---
+// Favorite button component with localStorage persistence
+interface Props {
+  artId: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { artId, size = 'md' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-5 h-5',
+  md: 'w-6 h-6',
+  lg: 'w-7 h-7'
+};
+---
+
+<button
+  class="favorite-btn p-2 text-gray-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 rounded transition-colors"
+  data-art-id={artId}
+  aria-label="Add to favorites"
+>
+  <!-- Empty heart (default) -->
+  <svg class="heart-empty {sizeClasses[size]}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+  </svg>
+
+  <!-- Filled heart (favorited) -->
+  <svg class="heart-filled {sizeClasses[size]} hidden text-red-500" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"></path>
+  </svg>
+</button>
+
+<script>
+  // Favorites management
+  const FAVORITES_KEY = 'ascii_favorites';
+
+  function getFavorites(): string[] {
+    try {
+      const stored = localStorage.getItem(FAVORITES_KEY);
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveFavorites(favorites: string[]): void {
+    try {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+      // Dispatch event for other components to listen
+      window.dispatchEvent(new CustomEvent('favoritesChanged', { detail: { favorites } }));
+    } catch (err) {
+      console.error('Failed to save favorites:', err);
+    }
+  }
+
+  function toggleFavorite(artId: string): boolean {
+    const favorites = getFavorites();
+    const index = favorites.indexOf(artId);
+
+    if (index > -1) {
+      favorites.splice(index, 1);
+      saveFavorites(favorites);
+      return false;
+    } else {
+      favorites.push(artId);
+      saveFavorites(favorites);
+      return true;
+    }
+  }
+
+  function isFavorite(artId: string): boolean {
+    return getFavorites().includes(artId);
+  }
+
+  function updateButtonState(button: HTMLElement, isFav: boolean): void {
+    const emptyHeart = button.querySelector('.heart-empty');
+    const filledHeart = button.querySelector('.heart-filled');
+
+    if (isFav) {
+      emptyHeart?.classList.add('hidden');
+      filledHeart?.classList.remove('hidden');
+      button.classList.add('text-red-500');
+      button.classList.remove('text-gray-400');
+      button.setAttribute('aria-label', 'Remove from favorites');
+    } else {
+      emptyHeart?.classList.remove('hidden');
+      filledHeart?.classList.add('hidden');
+      button.classList.remove('text-red-500');
+      button.classList.add('text-gray-400');
+      button.setAttribute('aria-label', 'Add to favorites');
+    }
+  }
+
+  // Initialize all favorite buttons on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const favoriteButtons = document.querySelectorAll('.favorite-btn');
+
+    favoriteButtons.forEach((button) => {
+      const artId = (button as HTMLElement).dataset.artId;
+      if (artId) {
+        const isFav = isFavorite(artId);
+        updateButtonState(button as HTMLElement, isFav);
+      }
+    });
+  });
+
+  // Handle favorite button clicks
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const button = target.closest('.favorite-btn') as HTMLElement;
+
+    if (button) {
+      e.preventDefault();
+      const artId = button.dataset.artId;
+
+      if (artId) {
+        const isFav = toggleFavorite(artId);
+        updateButtonState(button, isFav);
+      }
+    }
+  });
+
+  // Export for use in other scripts
+  if (typeof window !== 'undefined') {
+    (window as any).favoriteUtils = {
+      getFavorites,
+      isFavorite,
+      toggleFavorite
+    };
+  }
+</script>

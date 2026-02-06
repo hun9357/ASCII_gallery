@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AsciiCard from '../../components/AsciiCard.astro';
+import FavoriteButton from '../../components/FavoriteButton.astro';
 import asciiArts from '../../data/ascii-arts.json';
 import categories from '../../data/categories.json';
 
@@ -19,27 +20,84 @@ const relatedArts = asciiArts.arts
 
 const title = `${art.title} ASCII Art - Copy & Paste | ASCII Art Gallery`;
 const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, social media, and messaging. One-click copy!`;
+
+// Schema for individual art page
+const siteUrl = 'https://ascii-art-gallery.com';
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "name": `${art.title} ASCII Art`,
+      "alternativeHeadline": title,
+      "description": description,
+      "text": art.content,
+      "genre": "ASCII Art",
+      "keywords": art.tags.join(', '),
+      "inLanguage": "en",
+      "url": `${siteUrl}/art/${art.id}`,
+      "creator": {
+        "@type": "Organization",
+        "name": "ASCII Art Gallery"
+      },
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "name": `${category?.name} ASCII Art Collection`,
+        "url": `${siteUrl}/category/${art.category}`
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": category?.name,
+          "item": `${siteUrl}/category/${art.category}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": art.title,
+          "item": `${siteUrl}/art/${art.id}`
+        }
+      ]
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={schema}>
   <!-- Breadcrumb -->
-  <nav class="text-sm text-gray-500 mb-6">
-    <a href="/" class="hover:text-gray-700">Home</a>
-    <span class="mx-2">/</span>
-    <a href={`/category/${art.category}`} class="hover:text-gray-700">{category?.name}</a>
-    <span class="mx-2">/</span>
-    <span class="text-gray-900">{art.title}</span>
+  <nav class="text-sm text-gray-500 dark:text-gray-400 mb-6" aria-label="Breadcrumb">
+    <ol class="flex items-center">
+      <li><a href="/" class="hover:text-gray-700 dark:hover:text-gray-300">Home</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href={`/category/${art.category}`} class="hover:text-gray-700 dark:hover:text-gray-300">{category?.name}</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><span class="text-gray-900 dark:text-gray-100">{art.title}</span></li>
+    </ol>
   </nav>
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <!-- Main Content -->
     <div class="lg:col-span-2">
-      <h1 class="text-3xl font-bold text-gray-900 mb-6">{art.title} ASCII Art</h1>
+      <div class="flex items-start justify-between mb-6">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{art.title} ASCII Art</h1>
+        <FavoriteButton artId={art.id} size="lg" />
+      </div>
 
       <!-- Large ASCII Display -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-        <div class="bg-gray-50 rounded-md p-6 mb-6 overflow-x-auto">
-          <pre class="ascii-content text-lg text-gray-800 select-all">{art.content}</pre>
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+        <div class="bg-gray-50 dark:bg-gray-900 rounded-md p-6 mb-6 overflow-x-auto">
+          <pre class="ascii-content text-lg text-gray-800 dark:text-gray-200 select-all">{art.content}</pre>
         </div>
 
         <button
@@ -51,9 +109,9 @@ const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, 
       </div>
 
       <!-- How to Use -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">How to Copy {art.title} ASCII Art</h2>
-        <ol class="list-decimal list-inside text-gray-600 space-y-2">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">How to Copy {art.title} ASCII Art</h2>
+        <ol class="list-decimal list-inside text-gray-600 dark:text-gray-400 space-y-2">
           <li>Click the "Copy to Clipboard" button above</li>
           <li>Open Discord, Twitter, or any messaging app</li>
           <li>Paste using Ctrl+V (Windows) or Cmd+V (Mac)</li>
@@ -62,9 +120,9 @@ const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, 
       </div>
 
       <!-- Where to Use -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h2 class="text-xl font-bold text-gray-900 mb-4">Where to Use {art.title} ASCII Art</h2>
-        <ul class="list-disc list-inside text-gray-600 space-y-2">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Where to Use {art.title} ASCII Art</h2>
+        <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
           <li><strong>Discord</strong> - Server messages, status, and bios</li>
           <li><strong>Twitter/X</strong> - Tweets and profile bios</li>
           <li><strong>Instagram</strong> - Bio and comments</li>
@@ -78,22 +136,22 @@ const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, 
     <!-- Sidebar -->
     <div class="lg:col-span-1">
       <!-- Info Card -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-        <h3 class="font-bold text-gray-900 mb-4">Details</h3>
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+        <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Details</h3>
         <dl class="space-y-3 text-sm">
           <div>
-            <dt class="text-gray-500">Category</dt>
+            <dt class="text-gray-500 dark:text-gray-400">Category</dt>
             <dd>
-              <a href={`/category/${art.category}`} class="text-blue-600 hover:text-blue-800">
+              <a href={`/category/${art.category}`} class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
                 {category?.icon} {category?.name}
               </a>
             </dd>
           </div>
           <div>
-            <dt class="text-gray-500">Tags</dt>
+            <dt class="text-gray-500 dark:text-gray-400">Tags</dt>
             <dd class="flex flex-wrap gap-1 mt-1">
               {art.tags.map((tag) => (
-                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">{tag}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs">{tag}</span>
               ))}
             </dd>
           </div>
@@ -101,7 +159,7 @@ const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, 
       </div>
 
       <!-- Ad Slot -->
-      <div class="bg-gray-100 border border-dashed border-gray-300 rounded-lg p-4 mb-6 text-center text-gray-400 text-sm h-64 flex items-center justify-center">
+      <div class="bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 mb-6 text-center text-gray-400 dark:text-gray-500 text-sm h-64 flex items-center justify-center">
         Ad Space (300x250)
       </div>
     </div>
@@ -110,7 +168,7 @@ const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, 
   <!-- Related Arts -->
   {relatedArts.length > 0 && (
     <section class="mt-12">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Related {category?.name} ASCII Art</h2>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Related {category?.name} ASCII Art</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {relatedArts.map((related) => (
           <AsciiCard

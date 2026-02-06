@@ -1,0 +1,109 @@
+---
+// Mobile hamburger menu component
+import categoriesData from '../data/categories.json';
+const categories = categoriesData.categories;
+---
+
+<!-- Mobile Menu Button -->
+<button
+  id="mobile-menu-btn"
+  class="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+  aria-label="Toggle mobile menu"
+  aria-expanded="false"
+>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+</button>
+
+<!-- Mobile Menu Overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+  aria-hidden="true"
+>
+  <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300">
+    <div class="flex items-center justify-between p-4 border-b border-gray-200">
+      <span class="font-bold text-gray-900">Menu</span>
+      <button
+        id="mobile-menu-close"
+        class="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+        aria-label="Close mobile menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="p-4">
+      <ul class="space-y-4">
+        <li>
+          <a href="/" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">
+            Home
+          </a>
+        </li>
+        {categories.map(cat => (
+          <li>
+            <a
+              href={`/category/${cat.slug}`}
+              class="block py-2 text-gray-700 hover:text-blue-600"
+            >
+              <span class="mr-2">{cat.icon}</span>
+              {cat.name}
+            </a>
+          </li>
+        ))}
+        <li class="border-t border-gray-200 pt-4">
+          <a href="/favorites" class="block py-2 text-gray-700 hover:text-blue-600">
+            <span class="mr-2">⭐</span>
+            Favorites
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="block py-2 text-gray-700 hover:text-blue-600">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/privacy" class="block py-2 text-gray-700 hover:text-blue-600">
+            Privacy
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const menuPanel = mobileMenu?.querySelector('div');
+
+  function openMenu() {
+    mobileMenu?.classList.remove('hidden');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    setTimeout(() => {
+      menuPanel?.classList.remove('translate-x-full');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menuPanel?.classList.add('translate-x-full');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      mobileMenu?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  mobileMenuBtn?.addEventListener('click', openMenu);
+  mobileMenuClose?.addEventListener('click', closeMenu);
+  mobileMenu?.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      closeMenu();
+    }
+  });
+</script>

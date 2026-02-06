@@ -7,13 +7,56 @@ import asciiArts from '../data/ascii-arts.json';
 
 const title = "ASCII Art Copy Paste - Free Text Art Collection";
 const description = "Copy and paste ASCII art instantly. Free collection of text art, symbols, animals, borders, and emojis for Discord, social media, and messaging. One-click copy!";
+
+// Create ItemList schema for the homepage
+const siteUrl = 'https://ascii-art-gallery.com';
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ASCII Art Gallery",
+      "description": "Free ASCII art copy and paste collection. 200+ text art, kaomoji, emoticons, animals, symbols.",
+      "url": siteUrl,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${siteUrl}/?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "ASCII Art Collection",
+      "description": "Complete collection of copy-paste ASCII art",
+      "numberOfItems": asciiArts.arts.length,
+      "itemListElement": asciiArts.arts.slice(0, 20).map((art, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "@id": `${siteUrl}/art/${art.id}`,
+          "name": art.title,
+          "description": `${art.title} ASCII art - ${art.category}`,
+          "text": art.content,
+          "genre": "ASCII Art",
+          "keywords": art.tags.join(', '),
+          "inLanguage": "en",
+          "isAccessibleForFree": true
+        }
+      }))
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={schema}>
   <!-- Hero Section -->
   <section class="text-center mb-10">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">ASCII Art Gallery</h1>
-    <p class="text-lg text-gray-600 mb-6">Copy & paste ASCII art instantly. Free collection for Discord, social media, and messaging.</p>
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">ASCII Art Gallery</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Copy & paste ASCII art instantly. Free collection for Discord, social media, and messaging.</p>
 
     <div class="max-w-xl mx-auto">
       <SearchBar placeholder="Search ASCII art (cat, heart, shrug...)" />
@@ -24,7 +67,7 @@ const description = "Copy and paste ASCII art instantly. Free collection of text
   <CategoryFilter />
 
   <!-- Ad Slot Placeholder -->
-  <div class="bg-gray-100 border border-dashed border-gray-300 rounded-lg p-4 mb-8 text-center text-gray-400 text-sm">
+  <div class="bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 mb-8 text-center text-gray-400 dark:text-gray-500 text-sm">
     Ad Space (728x90)
   </div>
 
@@ -44,28 +87,28 @@ const description = "Copy and paste ASCII art instantly. Free collection of text
   </div>
 
   <!-- Ad Slot Placeholder -->
-  <div class="bg-gray-100 border border-dashed border-gray-300 rounded-lg p-4 mt-8 text-center text-gray-400 text-sm">
+  <div class="bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 mt-8 text-center text-gray-400 dark:text-gray-500 text-sm">
     Ad Space (728x90)
   </div>
 
   <!-- SEO Content -->
-  <section class="mt-12 prose prose-gray max-w-none">
-    <h2 class="text-2xl font-bold text-gray-900 mb-4">What is ASCII Art?</h2>
-    <p class="text-gray-600 mb-4">
+  <section class="mt-12 prose prose-gray dark:prose-invert max-w-none">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">What is ASCII Art?</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-4">
       ASCII art is a graphic design technique that uses text characters to create visual art.
       These text-based images can be easily copied and pasted into any platform that supports text,
       including Discord, Twitter, Instagram bios, messaging apps, and code comments.
     </p>
 
-    <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">How to Use ASCII Art</h2>
-    <ol class="list-decimal list-inside text-gray-600 space-y-2">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 mt-8">How to Use ASCII Art</h2>
+    <ol class="list-decimal list-inside text-gray-600 dark:text-gray-400 space-y-2">
       <li>Browse our collection or use the search bar to find ASCII art you like</li>
       <li>Click the "Copy" button to copy the ASCII art to your clipboard</li>
       <li>Paste it anywhere using Ctrl+V (Windows) or Cmd+V (Mac)</li>
     </ol>
 
-    <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Popular ASCII Art Categories</h2>
-    <ul class="list-disc list-inside text-gray-600 space-y-2">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 mt-8">Popular ASCII Art Categories</h2>
+    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
       <li><strong>Animals</strong> - Cats, dogs, bunnies, and more cute creatures</li>
       <li><strong>Symbols</strong> - Hearts, stars, arrows, and special characters</li>
       <li><strong>Emoticons</strong> - Kaomoji and text faces like shrug and lenny face</li>
