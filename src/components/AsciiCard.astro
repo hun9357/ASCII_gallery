@@ -12,7 +12,7 @@ interface Props {
 const { id, title, content, category, tags = [] } = Astro.props;
 ---
 
-<article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-shadow">
+<article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
   <div class="p-4">
     <div class="flex items-start justify-between mb-3">
       <h3 class="font-medium text-gray-900 dark:text-gray-100 flex-1">
@@ -35,13 +35,24 @@ const { id, title, content, category, tags = [] } = Astro.props;
         >
           {category}
         </a>
+        {tags.slice(0, 2).map((tag) => (
+          <a
+            href={`/?tags=${tag}`}
+            class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+          >
+            {tag}
+          </a>
+        ))}
       </div>
 
       <button
-        class="copy-btn px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600 transition-colors cursor-pointer"
+        class="copy-btn px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600 active:bg-green-500 transition-colors cursor-pointer flex items-center gap-2"
         data-content={content}
       >
-        Copy
+        <span class="copy-text">Copy</span>
+        <svg class="copy-check w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
       </button>
     </div>
   </div>

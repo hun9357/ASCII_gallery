@@ -4,25 +4,42 @@ interface Props {
 }
 
 const { placeholder = "Search ASCII art..." } = Astro.props;
+
+const popularSearches = ['cat', 'heart', 'shrug', 'table flip', 'star', 'smile'];
 ---
 
 <div class="relative">
-  <input
-    type="text"
-    id="search-input"
-    placeholder={placeholder}
-    class="w-full px-4 py-3 pl-10 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 outline-none transition-shadow"
-    aria-label="Search ASCII art"
-  />
-  <svg
-    class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-  >
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-  </svg>
+  <div class="relative">
+    <input
+      type="text"
+      id="search-input"
+      placeholder={placeholder}
+      class="w-full px-4 py-3 pl-10 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 outline-none transition-shadow"
+      aria-label="Search ASCII art"
+    />
+    <svg
+      class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  </div>
+
+  <!-- Popular Searches -->
+  <div id="popular-searches" class="mt-2 flex flex-wrap gap-2">
+    <span class="text-xs text-gray-500 dark:text-gray-400">Popular:</span>
+    {popularSearches.map((search) => (
+      <button
+        class="popular-search-btn text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+        data-search={search}
+      >
+        {search}
+      </button>
+    ))}
+  </div>
 </div>
 
 <script>
@@ -42,6 +59,20 @@ const { placeholder = "Search ASCII art..." } = Astro.props;
       const matches = query === '' || searchText.includes(query);
       (card as HTMLElement).style.display = matches ? '' : 'none';
       if (matches) visibleCount++;
+
+      // Highlight matching text (basic implementation)
+      if (matches && query !== '') {
+        const cardElement = card as HTMLElement;
+        const title = cardElement.querySelector('h3');
+        if (title && title.textContent) {
+          const originalText = title.textContent;
+          const regex = new RegExp(`(${query})`, 'gi');
+          const highlighted = originalText.replace(regex, '<mark class="bg-yellow-200 dark:bg-yellow-700">$1</mark>');
+          if (highlighted !== originalText) {
+            title.innerHTML = highlighted;
+          }
+        }
+      }
     });
 
     // Update results count
@@ -77,6 +108,34 @@ const { placeholder = "Search ASCII art..." } = Astro.props;
       const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
       updateResultsDisplay(query);
     }, 200);
+  });
+
+  // Popular search click handlers
+  const popularSearchButtons = document.querySelectorAll('.popular-search-btn');
+  popularSearchButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const search = btn.getAttribute('data-search');
+      if (search && searchInput) {
+        searchInput.value = search;
+        updateResultsDisplay(search.toLowerCase());
+        searchInput.focus();
+      }
+    });
+  });
+
+  // Hide popular searches when user starts typing
+  searchInput?.addEventListener('focus', () => {
+    const popularSearches = document.getElementById('popular-searches');
+    if (searchInput.value === '' && popularSearches) {
+      popularSearches.style.display = 'flex';
+    }
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    const popularSearches = document.getElementById('popular-searches');
+    if (popularSearches) {
+      popularSearches.style.display = (e.target as HTMLInputElement).value === '' ? 'flex' : 'none';
+    }
   });
 
   // Initial display update

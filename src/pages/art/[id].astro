@@ -2,8 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AsciiCard from '../../components/AsciiCard.astro';
 import FavoriteButton from '../../components/FavoriteButton.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import asciiArts from '../../data/ascii-arts.json';
 import categories from '../../data/categories.json';
+import blogPosts from '../../data/blog-posts.json';
 
 export async function getStaticPaths() {
   return asciiArts.arts.map((art) => ({
@@ -17,6 +19,14 @@ const category = categories.categories.find((c) => c.slug === art.category);
 const relatedArts = asciiArts.arts
   .filter((a) => a.category === art.category && a.id !== art.id)
   .slice(0, 6);
+
+// Find related blog posts based on tags or category
+const relatedPosts = blogPosts.posts
+  .filter(post =>
+    post.tags.some(tag => art.tags.includes(tag)) ||
+    post.tags.includes(art.category)
+  )
+  .slice(0, 2);
 
 const title = `${art.title} ASCII Art - Copy & Paste | ASCII Art Gallery`;
 const description = `Copy ${art.title} ASCII art for free. Perfect for Discord, social media, and messaging. One-click copy!`;
@@ -76,15 +86,13 @@ const schema = {
 
 <BaseLayout title={title} description={description} schema={schema}>
   <!-- Breadcrumb -->
-  <nav class="text-sm text-gray-500 dark:text-gray-400 mb-6" aria-label="Breadcrumb">
-    <ol class="flex items-center">
-      <li><a href="/" class="hover:text-gray-700 dark:hover:text-gray-300">Home</a></li>
-      <li><span class="mx-2">/</span></li>
-      <li><a href={`/category/${art.category}`} class="hover:text-gray-700 dark:hover:text-gray-300">{category?.name}</a></li>
-      <li><span class="mx-2">/</span></li>
-      <li><span class="text-gray-900 dark:text-gray-100">{art.title}</span></li>
-    </ol>
-  </nav>
+  <Breadcrumb
+    items={[
+      { name: 'Home', url: '/' },
+      { name: category?.name || art.category, url: `/category/${art.category}` },
+      { name: art.title }
+    ]}
+  />
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
     <!-- Main Content -->
@@ -186,6 +194,45 @@ const schema = {
       </div>
     </div>
   </div>
+
+  <!-- Related Blog Posts -->
+  {relatedPosts.length > 0 && (
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Related Articles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        {relatedPosts.map((post) => (
+          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-all hover:-translate-y-1">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              <a
+                href={`/blog/${post.slug}`}
+                class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                {post.title}
+              </a>
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-3 line-clamp-2">
+              {post.excerpt}
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex gap-2">
+                {post.tags.slice(0, 2).map((tag) => (
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={`/blog/${post.slug}`}
+                class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors"
+              >
+                Read →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <!-- Related Arts -->
   {relatedArts.length > 0 && (

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import blogPosts from '../../data/blog-posts.json';
+
+const title = "ASCII Art Blog - Guides, Tips & Tutorials";
+const description = "Learn how to use ASCII art effectively. Guides for Discord, developers, social media, and more. Tips and tutorials for text art enthusiasts.";
+
+const siteUrl = 'https://asciiartgallery.netlify.app';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "ASCII Art Gallery Blog",
+  "description": description,
+  "url": `${siteUrl}/blog`,
+  "blogPost": blogPosts.posts.map(post => ({
+    "@type": "BlogPosting",
+    "@id": `${siteUrl}/blog/${post.slug}`,
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.publishedAt,
+    "url": `${siteUrl}/blog/${post.slug}`,
+    "keywords": post.tags.join(', '),
+    "author": {
+      "@type": "Organization",
+      "name": "ASCII Art Gallery"
+    }
+  }))
+};
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={`${siteUrl}/blog`} schema={schema}>
+  <!-- Hero Section -->
+  <section class="mb-10">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">ASCII Art Blog</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400">Guides, tips, and tutorials for using ASCII art effectively.</p>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    {blogPosts.posts.map((post) => (
+      <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+            <a
+              href={`/blog/${post.slug}`}
+              class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              {post.title}
+            </a>
+          </h2>
+
+          <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <time datetime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+
+          <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+            {post.excerpt}
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href={`/blog/${post.slug}`}
+              class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors"
+            >
+              Read more →
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Back to Home -->
+  <div class="text-center">
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+    >
+      ← Back to ASCII Art Gallery
+    </a>
+  </div>
+</BaseLayout>

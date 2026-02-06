@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import asciiArts from '../data/ascii-arts.json';
+
+const title = "404 - Page Not Found | ASCII Art Gallery";
+const description = "Oops! The page you're looking for doesn't exist. Browse our ASCII art collection instead.";
+
+// Get random ASCII arts to show
+const randomArts = asciiArts.arts
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 3);
+
+const notFoundArt = `
+    ___   ___  ___
+   / _ \\ / _ \\/ _ \\
+  | | | | | | | | |
+  | |_| | |_| | |_|
+   \\___/ \\___/ \\___/
+
+   NOT FOUND :(
+`;
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- 404 Content -->
+  <div class="max-w-3xl mx-auto text-center">
+    <!-- ASCII Art 404 -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-8">
+      <pre class="text-blue-600 dark:text-blue-400 text-sm md:text-base font-mono select-all overflow-x-auto">{notFoundArt}</pre>
+    </div>
+
+    <!-- Error Message -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        Page Not Found
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+        Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <a
+        href="/"
+        class="px-8 py-3 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition-colors"
+      >
+        Browse ASCII Art
+      </a>
+      <a
+        href="/blog"
+        class="px-8 py-3 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+      >
+        Read Blog
+      </a>
+    </div>
+
+    <!-- Helpful Links -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-12">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        Popular Pages
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a
+          href="/category/animals"
+          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        >
+          Animals
+        </a>
+        <a
+          href="/category/symbols"
+          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        >
+          Symbols
+        </a>
+        <a
+          href="/category/emojis"
+          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        >
+          Emoticons
+        </a>
+        <a
+          href="/category/borders"
+          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        >
+          Borders
+        </a>
+      </div>
+    </div>
+
+    <!-- Random ASCII Arts -->
+    <div class="text-left">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">
+        Meanwhile, check out these ASCII arts...
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {randomArts.map((art) => (
+          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
+            <div class="p-4">
+              <h3 class="font-medium text-gray-900 dark:text-gray-100 mb-3">
+                <a href={`/art/${art.id}`} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  {art.title}
+                </a>
+              </h3>
+              <div class="bg-gray-50 dark:bg-gray-900 rounded-md p-4 mb-4 overflow-x-auto">
+                <pre class="ascii-content text-sm text-gray-800 dark:text-gray-200 select-all">{art.content}</pre>
+              </div>
+              <div class="flex items-center justify-between">
+                <a
+                  href={`/category/${art.category}`}
+                  class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                >
+                  {art.category}
+                </a>
+                <button
+                  class="copy-btn px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600 transition-colors cursor-pointer"
+                  data-content={art.content}
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

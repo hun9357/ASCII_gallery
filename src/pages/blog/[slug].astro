@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AsciiCard from '../../components/AsciiCard.astro';
+import blogPosts from '../../data/blog-posts.json';
+import asciiArts from '../../data/ascii-arts.json';
+
+export async function getStaticPaths() {
+  return blogPosts.posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+// Find related ASCII arts based on post tags
+const relatedArts = asciiArts.arts
+  .filter(art =>
+    art.tags.some(tag => post.tags.includes(tag)) ||
+    art.category === post.tags[0]
+  )
+  .slice(0, 4);
+
+const title = `${post.title} | ASCII Art Gallery Blog`;
+const description = post.excerpt;
+
+const siteUrl = 'https://asciiartgallery.netlify.app';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.publishedAt,
+      "dateModified": post.publishedAt,
+      "author": {
+        "@type": "Organization",
+        "name": "ASCII Art Gallery"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ASCII Art Gallery",
+        "url": siteUrl
+      },
+      "url": `${siteUrl}/blog/${post.slug}`,
+      "keywords": post.tags.join(', '),
+      "articleBody": post.content.replace(/<[^>]*>/g, ''),
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": `${siteUrl}/blog`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": post.title,
+          "item": `${siteUrl}/blog/${post.slug}`
+        }
+      ]
+    }
+  ]
+};
+
+// Get other posts
+const otherPosts = blogPosts.posts.filter(p => p.id !== post.id).slice(0, 3);
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={`${siteUrl}/blog/${post.slug}`} schema={schema}>
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-gray-500 dark:text-gray-400 mb-6" aria-label="Breadcrumb">
+    <ol class="flex items-center">
+      <li><a href="/" class="hover:text-gray-700 dark:hover:text-gray-300">Home</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/blog" class="hover:text-gray-700 dark:hover:text-gray-300">Blog</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><span class="text-gray-900 dark:text-gray-100">{post.title}</span></li>
+    </ol>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Main Content -->
+    <div class="lg:col-span-2">
+      <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-8">
+        <!-- Header -->
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{post.title}</h1>
+
+          <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <time datetime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="prose prose-gray dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-li:text-gray-600 dark:prose-li:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400">
+          <Fragment set:html={post.content} />
+        </div>
+      </article>
+
+      <!-- Related ASCII Art -->
+      {relatedArts.length > 0 && (
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Related ASCII Art</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {relatedArts.map((art) => (
+              <AsciiCard
+                id={art.id}
+                title={art.title}
+                content={art.content}
+                category={art.category}
+                tags={art.tags}
+              />
+            ))}
+          </div>
+          <div class="mt-6 text-center">
+            <a
+              href="/"
+              class="inline-block px-6 py-3 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition-colors"
+            >
+              Browse All ASCII Art →
+            </a>
+          </div>
+        </section>
+      )}
+
+      <!-- Other Posts -->
+      {otherPosts.length > 0 && (
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">More from the Blog</h2>
+          <div class="space-y-4">
+            {otherPosts.map((otherPost) => (
+              <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-all hover:-translate-y-1">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                  <a
+                    href={`/blog/${otherPost.slug}`}
+                    class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    {otherPost.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                  {otherPost.excerpt}
+                </p>
+                <a
+                  href={`/blog/${otherPost.slug}`}
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors"
+                >
+                  Read more →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    <!-- Sidebar -->
+    <div class="lg:col-span-1">
+      <!-- Back to Blog -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+        <a
+          href="/blog"
+          class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
+        >
+          ← All Blog Posts
+        </a>
+      </div>
+
+      <!-- Tags -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+        <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Topics</h3>
+        <div class="flex flex-wrap gap-2">
+          {post.tags.map((tag) => (
+            <a
+              href={`/?tags=${tag}`}
+              class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-700 dark:hover:text-blue-300 rounded-full text-sm transition-colors"
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Ad Slot -->
+      <div class="bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 text-center text-gray-400 dark:text-gray-500 text-sm h-64 flex items-center justify-center">
+        Ad Space (300x250)
+      </div>
+    </div>
+  </div>
+</BaseLayout>
