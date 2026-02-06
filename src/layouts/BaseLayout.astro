@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, description, canonicalUrl, schema } = Astro.props;
-const siteUrl = 'https://ascii-art-gallery.com';
+const siteUrl = 'https://asciiartgallery.netlify.app';
 const fullCanonical = canonicalUrl || Astro.url.href;
 
 // Default WebSite schema
@@ -57,6 +57,9 @@ const schemaMarkup = schema || defaultSchema;
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <!-- Additional head elements from pages -->
+    <slot name="head" />
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
@@ -114,7 +117,7 @@ const schemaMarkup = schema || defaultSchema;
     <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
       <div class="max-w-6xl mx-auto px-4 py-8">
         <div class="text-center text-gray-500 dark:text-gray-400 text-sm">
-          <p>&copy; 2025 ASCII Art Gallery. Free to copy and use.</p>
+          <p>&copy; {new Date().getFullYear()} ASCII Art Gallery. Free to copy and use.</p>
           <p class="mt-2">
             <a href="/about" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">About</a>
             <span class="mx-2">·</span>
