@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ascii-art-gallery.com/sitemap.xml
+Sitemap: https://steady-tiramisu-8e81fc.netlify.app/sitemap.xml

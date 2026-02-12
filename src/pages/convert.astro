@@ -1,0 +1,507 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Free Image to ASCII Art Converter Online - ASCII Art Gallery';
+const description = 'Convert any image to ASCII art instantly. Free online tool with adjustable resolution, real-time preview, copy to clipboard, and download as text file. No signup required.';
+
+const siteUrl = 'https://steady-tiramisu-8e81fc.netlify.app';
+const canonicalUrl = `${siteUrl}/convert`;
+
+// JSON-LD Schema for WebApplication
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image to ASCII Art Converter",
+  "description": description,
+  "url": canonicalUrl,
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Convert images to ASCII art",
+    "Adjustable resolution (20-200 characters)",
+    "Real-time preview",
+    "Copy to clipboard",
+    "Download as text file",
+    "Invert colors option",
+    "Drag and drop upload",
+    "No signup required"
+  ],
+  "browserRequirements": "Requires JavaScript",
+  "softwareVersion": "1.0",
+  "author": {
+    "@type": "Organization",
+    "name": "ASCII Art Gallery",
+    "url": siteUrl
+  }
+};
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl} schema={schema}>
+  <!-- Additional SEO meta tags -->
+  <Fragment slot="head">
+    <meta name="keywords" content="image to ascii, ascii art converter, text art generator, ascii art maker, convert photo to text, image to text art, free ascii converter, online ascii tool" />
+    <meta property="og:image" content={`${siteUrl}/og-convert.png`} />
+    <meta name="twitter:image" content={`${siteUrl}/og-convert.png`} />
+  </Fragment>
+  <div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+        Image to ASCII Converter
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Transform your images into stunning ASCII art. Upload an image, adjust the resolution, and export your creation.
+      </p>
+    </div>
+
+    <!-- Main Converter Container -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <!-- Upload Section -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          1. Upload Image
+        </h2>
+
+        <!-- Drop Zone -->
+        <div
+          id="dropzone"
+          class="relative border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center transition-all duration-200 cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-gray-700/50"
+        >
+          <input
+            type="file"
+            id="file-input"
+            accept="image/*"
+            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            aria-label="Upload image file"
+          />
+          <div id="dropzone-content">
+            <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p class="text-gray-600 dark:text-gray-300 font-medium mb-1">
+              Drop an image here or click to browse
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              PNG, JPG, GIF, WebP (Max 5MB)
+            </p>
+          </div>
+        </div>
+
+        <!-- Preview of uploaded image -->
+        <div id="image-preview-container" class="hidden mt-4">
+          <div class="relative">
+            <img
+              id="image-preview"
+              src=""
+              alt="Uploaded image preview"
+              class="w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700"
+            />
+            <button
+              id="remove-image-btn"
+              class="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg"
+              aria-label="Remove image"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" id="image-info">
+          </p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="hidden mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          2. Adjust Settings
+        </h2>
+
+        <!-- Resolution Slider -->
+        <div class="mb-6">
+          <label for="width-slider" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Resolution (Width)
+          </label>
+          <div class="flex items-center gap-4">
+            <input
+              type="range"
+              id="width-slider"
+              min="20"
+              max="200"
+              value="80"
+              class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
+            />
+            <span id="width-value" class="text-lg font-semibold text-gray-900 dark:text-gray-100 w-12 text-right">
+              80
+            </span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Higher values = more detail, but larger output
+          </p>
+        </div>
+
+        <!-- Invert Colors Toggle -->
+        <div class="mb-6">
+          <label class="flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              id="invert-toggle"
+              class="w-5 h-5 text-blue-500 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer"
+            />
+            <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+              Invert colors
+            </span>
+          </label>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 ml-8">
+            Use for light backgrounds or artistic effect
+          </p>
+        </div>
+
+        <!-- Convert Button -->
+        <button
+          id="convert-btn"
+          disabled
+          class="w-full py-3 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-500 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
+        >
+          <span id="convert-btn-text">Upload an image to start</span>
+          <svg id="convert-btn-loading" class="hidden animate-spin h-5 w-5 mx-auto" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result-section" class="hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+            3. Your ASCII Art
+          </h2>
+          <div class="flex gap-2">
+            <button
+              id="copy-ascii-btn"
+              class="px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 active:bg-blue-700 transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+              <span id="copy-btn-text">Copy</span>
+            </button>
+            <button
+              id="download-ascii-btn"
+              class="px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-lg hover:bg-green-600 active:bg-green-700 transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              Download
+            </button>
+          </div>
+        </div>
+
+        <!-- ASCII Output -->
+        <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 overflow-x-auto">
+          <pre id="ascii-output" class="ascii-content text-xs text-gray-800 dark:text-gray-200 select-all"></pre>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-4 flex gap-4 text-xs text-gray-500 dark:text-gray-400">
+          <span id="ascii-dimensions"></span>
+          <span id="ascii-characters"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div
+    id="toast"
+    class="hidden fixed bottom-4 right-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg shadow-lg transition-all transform translate-y-0 opacity-100 z-50"
+  >
+    <div class="flex items-center gap-3">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      <span id="toast-message">Success!</span>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    import {
+      imageToAscii,
+      validateImageFile,
+      downloadAsciiAsText,
+      copyAsciiToClipboard,
+      type ConversionOptions,
+    } from '../utils/imageToAscii';
+
+    // State
+    let currentFile: File | null = null;
+    let currentAscii: string = '';
+    let conversionTimeout: number | null = null;
+
+    // DOM Elements
+    const dropzone = document.getElementById('dropzone') as HTMLDivElement;
+    const fileInput = document.getElementById('file-input') as HTMLInputElement;
+    const imagePreviewContainer = document.getElementById('image-preview-container') as HTMLDivElement;
+    const imagePreview = document.getElementById('image-preview') as HTMLImageElement;
+    const imageInfo = document.getElementById('image-info') as HTMLParagraphElement;
+    const removeImageBtn = document.getElementById('remove-image-btn') as HTMLButtonElement;
+    const errorMessage = document.getElementById('error-message') as HTMLDivElement;
+    const widthSlider = document.getElementById('width-slider') as HTMLInputElement;
+    const widthValue = document.getElementById('width-value') as HTMLSpanElement;
+    const invertToggle = document.getElementById('invert-toggle') as HTMLInputElement;
+    const convertBtn = document.getElementById('convert-btn') as HTMLButtonElement;
+    const convertBtnText = document.getElementById('convert-btn-text') as HTMLSpanElement;
+    const convertBtnLoading = document.getElementById('convert-btn-loading') as SVGElement;
+    const resultSection = document.getElementById('result-section') as HTMLDivElement;
+    const asciiOutput = document.getElementById('ascii-output') as HTMLPreElement;
+    const asciiDimensions = document.getElementById('ascii-dimensions') as HTMLSpanElement;
+    const asciiCharacters = document.getElementById('ascii-characters') as HTMLSpanElement;
+    const copyAsciiBtn = document.getElementById('copy-ascii-btn') as HTMLButtonElement;
+    const copyBtnText = document.getElementById('copy-btn-text') as HTMLSpanElement;
+    const downloadAsciiBtn = document.getElementById('download-ascii-btn') as HTMLButtonElement;
+    const toast = document.getElementById('toast') as HTMLDivElement;
+    const toastMessage = document.getElementById('toast-message') as HTMLSpanElement;
+
+    // Show error message
+    function showError(message: string) {
+      errorMessage.textContent = message;
+      errorMessage.classList.remove('hidden');
+      setTimeout(() => {
+        errorMessage.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Show toast notification
+    function showToast(message: string) {
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    // Handle file selection
+    function handleFile(file: File) {
+      const validation = validateImageFile(file);
+      if (!validation.valid) {
+        showError(validation.error!);
+        return;
+      }
+
+      currentFile = file;
+      errorMessage.classList.add('hidden');
+
+      // Show preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        imagePreview.src = e.target?.result as string;
+        imagePreviewContainer.classList.remove('hidden');
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        imageInfo.textContent = `${file.name} (${sizeMB} MB)`;
+      };
+      reader.readAsDataURL(file);
+
+      // Enable convert button
+      convertBtn.disabled = false;
+      convertBtnText.textContent = 'Convert to ASCII';
+
+      // Auto-convert with current settings
+      performConversion();
+    }
+
+    // Perform conversion with debouncing
+    function performConversion() {
+      if (!currentFile) return;
+
+      // Clear existing timeout
+      if (conversionTimeout !== null) {
+        clearTimeout(conversionTimeout);
+      }
+
+      // Set loading state
+      convertBtn.disabled = true;
+      convertBtnText.textContent = 'Converting...';
+      convertBtnLoading.classList.remove('hidden');
+      convertBtnText.classList.add('hidden');
+
+      // Debounce conversion
+      conversionTimeout = window.setTimeout(async () => {
+        try {
+          const options: ConversionOptions = {
+            width: parseInt(widthSlider.value),
+            invertColors: invertToggle.checked,
+          };
+
+          const result = await imageToAscii(currentFile!, options);
+          currentAscii = result.ascii;
+
+          // Update output
+          asciiOutput.textContent = currentAscii;
+          asciiDimensions.textContent = `Dimensions: ${result.width} × ${result.height} characters`;
+          asciiCharacters.textContent = `Characters: ${currentAscii.length.toLocaleString()}`;
+
+          // Show result section
+          resultSection.classList.remove('hidden');
+
+          // Scroll to result
+          setTimeout(() => {
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 100);
+
+          // Track conversion event
+          if (typeof gtag === 'function') {
+            gtag('event', 'convert_image', {
+              'width': result.width,
+              'height': result.height,
+              'inverted': invertToggle.checked,
+            });
+          }
+        } catch (error) {
+          showError('Failed to convert image. Please try again.');
+          console.error('Conversion error:', error);
+        } finally {
+          convertBtn.disabled = false;
+          convertBtnText.textContent = 'Convert to ASCII';
+          convertBtnLoading.classList.add('hidden');
+          convertBtnText.classList.remove('hidden');
+        }
+      }, 300);
+    }
+
+    // File input change handler
+    fileInput.addEventListener('change', (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        handleFile(file);
+      }
+    });
+
+    // Drag and drop handlers
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('border-blue-500', 'bg-blue-50', 'dark:bg-gray-700/50');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('border-blue-500', 'bg-blue-50', 'dark:bg-gray-700/50');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('border-blue-500', 'bg-blue-50', 'dark:bg-gray-700/50');
+
+      const file = e.dataTransfer?.files[0];
+      if (file) {
+        handleFile(file);
+      }
+    });
+
+    // Remove image handler
+    removeImageBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentFile = null;
+      fileInput.value = '';
+      imagePreviewContainer.classList.add('hidden');
+      resultSection.classList.add('hidden');
+      convertBtn.disabled = true;
+      convertBtnText.textContent = 'Upload an image to start';
+      errorMessage.classList.add('hidden');
+    });
+
+    // Width slider handler
+    widthSlider.addEventListener('input', () => {
+      widthValue.textContent = widthSlider.value;
+      performConversion();
+    });
+
+    // Invert toggle handler
+    invertToggle.addEventListener('change', () => {
+      performConversion();
+    });
+
+    // Convert button handler
+    convertBtn.addEventListener('click', () => {
+      performConversion();
+    });
+
+    // Copy button handler
+    copyAsciiBtn.addEventListener('click', async () => {
+      try {
+        await copyAsciiToClipboard(currentAscii);
+
+        // Update button state
+        copyBtnText.textContent = 'Copied!';
+        copyAsciiBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+        copyAsciiBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+
+        setTimeout(() => {
+          copyBtnText.textContent = 'Copy';
+          copyAsciiBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+          copyAsciiBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+        }, 2000);
+
+        showToast('ASCII art copied to clipboard!');
+
+        // Track copy event
+        if (typeof gtag === 'function') {
+          gtag('event', 'copy_converted_ascii', {
+            'content_length': currentAscii.length,
+          });
+        }
+      } catch (error) {
+        showError('Failed to copy to clipboard');
+        console.error('Copy error:', error);
+      }
+    });
+
+    // Download button handler
+    downloadAsciiBtn.addEventListener('click', () => {
+      try {
+        const filename = currentFile?.name.replace(/\.[^/.]+$/, '') || 'ascii-art';
+        downloadAsciiAsText(currentAscii, filename);
+        showToast('ASCII art downloaded!');
+
+        // Track download event
+        if (typeof gtag === 'function') {
+          gtag('event', 'download_ascii', {
+            'content_length': currentAscii.length,
+          });
+        }
+      } catch (error) {
+        showError('Failed to download file');
+        console.error('Download error:', error);
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ctrl/Cmd + C to copy when result is visible
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c' && !resultSection.classList.contains('hidden')) {
+        if (window.getSelection()?.toString() === '') {
+          e.preventDefault();
+          copyAsciiBtn.click();
+        }
+      }
+
+      // Ctrl/Cmd + S to download when result is visible
+      if ((e.ctrlKey || e.metaKey) && e.key === 's' && !resultSection.classList.contains('hidden')) {
+        e.preventDefault();
+        downloadAsciiBtn.click();
+      }
+    });
+  </script>
+</BaseLayout>
