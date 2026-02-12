@@ -1,0 +1,626 @@
+{
+  "categories": [
+    {
+      "id": "frames",
+      "name": "Frames",
+      "icon": "▭",
+      "description": "Classic ASCII borders and frames"
+    },
+    {
+      "id": "aesthetic",
+      "name": "Aesthetic",
+      "icon": "✧",
+      "description": "Aesthetic vibes and decorations"
+    },
+    {
+      "id": "emoji",
+      "name": "Emoji",
+      "icon": "♡",
+      "description": "Emoji-based decorations"
+    },
+    {
+      "id": "social",
+      "name": "Social",
+      "icon": "★",
+      "description": "Social media templates"
+    },
+    {
+      "id": "trendy",
+      "name": "Trendy",
+      "icon": "⚡",
+      "description": "Viral & trending styles"
+    },
+    {
+      "id": "minimal",
+      "name": "Minimal",
+      "icon": "·",
+      "description": "Clean & minimalist"
+    },
+    {
+      "id": "mood",
+      "name": "Mood",
+      "icon": "☺",
+      "description": "Express your mood"
+    },
+    {
+      "id": "kaomoji",
+      "name": "Kaomoji",
+      "icon": "ʕ•ᴥ•ʔ",
+      "description": "Japanese emoticons"
+    }
+  ],
+  "templates": [
+    {
+      "id": "frame-1",
+      "category": "frames",
+      "name": "Classic Box",
+      "template": "╔═══════════════════╗\n║   ${text}   ║\n╚═══════════════════╝"
+    },
+    {
+      "id": "frame-2",
+      "category": "frames",
+      "name": "Double Line",
+      "template": "╭─────────────────╮\n│  ✧ ${text} ✧  │\n╰─────────────────╯"
+    },
+    {
+      "id": "frame-3",
+      "category": "frames",
+      "name": "Star Border",
+      "template": "★═══════════════★\n    ${text}\n★═══════════════★"
+    },
+    {
+      "id": "frame-4",
+      "category": "frames",
+      "name": "Dotted Frame",
+      "template": "┌┄┄┄┄┄┄┄┄┄┄┄┄┄┄┐\n┆  ${text}  ┆\n└┄┄┄┄┄┄┄┄┄┄┄┄┄┄┘"
+    },
+    {
+      "id": "frame-5",
+      "category": "frames",
+      "name": "Bold Border",
+      "template": "┏━━━━━━━━━━━━━━┓\n┃  ${text}  ┃\n┗━━━━━━━━━━━━━━┛"
+    },
+    {
+      "id": "aesthetic-1",
+      "category": "aesthetic",
+      "name": "Sparkle Line",
+      "template": "✦ ─────── ✦\n   ${text}\n✦ ─────── ✦"
+    },
+    {
+      "id": "aesthetic-2",
+      "category": "aesthetic",
+      "name": "Star Divider",
+      "template": "･ﾟ✧･ﾟ: *✧･ﾟ:* ${text} *:･ﾟ✧*:･ﾟ✧"
+    },
+    {
+      "id": "aesthetic-3",
+      "category": "aesthetic",
+      "name": "Moon & Stars",
+      "template": "☆｡*ﾟ+.*.｡   ${text}   ｡.*.+ﾟ*｡☆"
+    },
+    {
+      "id": "aesthetic-4",
+      "category": "aesthetic",
+      "name": "Glitter",
+      "template": "✨ ${text} ✨"
+    },
+    {
+      "id": "aesthetic-5",
+      "category": "aesthetic",
+      "name": "Retro Wave",
+      "template": "▁ ▂ ▃ ▄ ${text} ▄ ▃ ▂ ▁"
+    },
+    {
+      "id": "emoji-1",
+      "category": "emoji",
+      "name": "Heart Border",
+      "template": "♡♡♡ ${text} ♡♡♡"
+    },
+    {
+      "id": "emoji-2",
+      "category": "emoji",
+      "name": "Star Circle",
+      "template": "⭐ ${text} ⭐"
+    },
+    {
+      "id": "emoji-3",
+      "category": "emoji",
+      "name": "Fire",
+      "template": "🔥 ${text} 🔥"
+    },
+    {
+      "id": "emoji-4",
+      "category": "emoji",
+      "name": "Crown",
+      "template": "👑 ${text} 👑"
+    },
+    {
+      "id": "emoji-5",
+      "category": "emoji",
+      "name": "Rainbow",
+      "template": "🌈 ${text} 🌈"
+    },
+    {
+      "id": "social-1",
+      "category": "social",
+      "name": "Instagram Tree",
+      "template": "┊ ┊ ┊ ┊\n┊ ┊ ┊ ★\n┊ ┊ ☆\n┊ ★ ${text}\n☆"
+    },
+    {
+      "id": "social-2",
+      "category": "social",
+      "name": "Bio Divider",
+      "template": "━━━━━━ ❖ ━━━━━━\n${text}\n━━━━━━ ❖ ━━━━━━"
+    },
+    {
+      "id": "social-3",
+      "category": "social",
+      "name": "Quote Style",
+      "template": "\" ${text} \""
+    },
+    {
+      "id": "social-4",
+      "category": "social",
+      "name": "Arrow Point",
+      "template": "➤ ${text}"
+    },
+    {
+      "id": "social-5",
+      "category": "social",
+      "name": "Bracket Style",
+      "template": "[ ${text} ]"
+    },
+    {
+      "id": "mood-1",
+      "category": "mood",
+      "name": "Happy Vibes",
+      "template": "～(˘▾˘)～ ${text} ～(˘▾˘)～"
+    },
+    {
+      "id": "mood-2",
+      "category": "mood",
+      "name": "Chill Bear",
+      "template": "ʕ•ᴥ•ʔ ${text} ʕ•ᴥ•ʔ"
+    },
+    {
+      "id": "mood-3",
+      "category": "mood",
+      "name": "Party Time",
+      "template": "ヽ(´▽`)/ ${text} ヽ(´▽`)/"
+    },
+    {
+      "id": "mood-4",
+      "category": "mood",
+      "name": "Love",
+      "template": "(づ｡◕‿‿◕｡)づ ${text}"
+    },
+    {
+      "id": "mood-5",
+      "category": "mood",
+      "name": "Cool",
+      "template": "(⌐■_■) ${text}"
+    },
+    {
+      "id": "kaomoji-1",
+      "category": "kaomoji",
+      "name": "Table Flip",
+      "template": "(╯°□°)╯︵ ${text}"
+    },
+    {
+      "id": "kaomoji-2",
+      "category": "kaomoji",
+      "name": "Shrug",
+      "template": "¯\\_(ツ)_/¯ ${text}"
+    },
+    {
+      "id": "kaomoji-3",
+      "category": "kaomoji",
+      "name": "Sparkle Eyes",
+      "template": "(✧ω✧) ${text}"
+    },
+    {
+      "id": "kaomoji-4",
+      "category": "kaomoji",
+      "name": "Music",
+      "template": "♪(┌・。・)┌ ${text}"
+    },
+    {
+      "id": "kaomoji-5",
+      "category": "kaomoji",
+      "name": "Cute Face",
+      "template": "( ˘ ³˘)♥ ${text}"
+    },
+
+    {
+      "id": "trendy-1",
+      "category": "trendy",
+      "name": "NPC Mode",
+      "template": "⚠️ NPC MODE: ON ⚠️\n> ${text}"
+    },
+    {
+      "id": "trendy-2",
+      "category": "trendy",
+      "name": "Main Character",
+      "template": "✨ main character energy ✨\n⋆｡°✩ ${text} ✩°｡⋆"
+    },
+    {
+      "id": "trendy-3",
+      "category": "trendy",
+      "name": "No Thoughts",
+      "template": "🧠: ❌\n💭: ${text}"
+    },
+    {
+      "id": "trendy-4",
+      "category": "trendy",
+      "name": "Error 404",
+      "template": "⚠️ ERROR 404 ⚠️\n${text} not found"
+    },
+    {
+      "id": "trendy-5",
+      "category": "trendy",
+      "name": "Loading",
+      "template": "█▒▒▒▒▒▒▒▒▒ 10%\n${text} loading..."
+    },
+    {
+      "id": "trendy-6",
+      "category": "trendy",
+      "name": "Certified",
+      "template": "✓ CERTIFIED ✓\n『 ${text} 』"
+    },
+    {
+      "id": "trendy-7",
+      "category": "trendy",
+      "name": "Update Log",
+      "template": "⟦ CHANGELOG ⟧\n→ ${text}"
+    },
+    {
+      "id": "trendy-8",
+      "category": "trendy",
+      "name": "Delulu",
+      "template": "🌸 delulu is the solulu 🌸\n↳ ${text}"
+    },
+    {
+      "id": "trendy-9",
+      "category": "trendy",
+      "name": "Roman Empire",
+      "template": "🏛️ thinking about:\n» ${text} «"
+    },
+    {
+      "id": "trendy-10",
+      "category": "trendy",
+      "name": "Ate & Left",
+      "template": "✧ ate and left no crumbs ✧\n${text}"
+    },
+
+    {
+      "id": "social-6",
+      "category": "social",
+      "name": "Linktree Style",
+      "template": "┃\n┣━━ ${text}\n┃"
+    },
+    {
+      "id": "social-7",
+      "category": "social",
+      "name": "Currently",
+      "template": "⟢ currently:\n  ↳ ${text}"
+    },
+    {
+      "id": "social-8",
+      "category": "social",
+      "name": "Status Update",
+      "template": "┌── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ──┐\n   ${text}\n└── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ──┘"
+    },
+    {
+      "id": "social-9",
+      "category": "social",
+      "name": "Level Up",
+      "template": "⚔️ LVL ${text} ⚔️\n━━━━━━━━━━━━━"
+    },
+    {
+      "id": "social-10",
+      "category": "social",
+      "name": "Achievement",
+      "template": "🏆 ACHIEVEMENT UNLOCKED\n▸ ${text}"
+    },
+    {
+      "id": "social-11",
+      "category": "social",
+      "name": "Now Playing",
+      "template": "♫ NOW PLAYING ♫\n▶ ${text}\n━━●━━━━━━━ 1:23"
+    },
+    {
+      "id": "social-12",
+      "category": "social",
+      "name": "DM Open",
+      "template": "✉️ DMs: OPEN\n↳ ${text}"
+    },
+    {
+      "id": "social-13",
+      "category": "social",
+      "name": "Pin Location",
+      "template": "📍 ${text}\n┗━━━━━━━━━━━━┛"
+    },
+
+    {
+      "id": "aesthetic-6",
+      "category": "aesthetic",
+      "name": "Angel Wings",
+      "template": "♡₊˚ 🦢・₊✧\n${text}\n✧₊・🦢 ˚₊♡"
+    },
+    {
+      "id": "aesthetic-7",
+      "category": "aesthetic",
+      "name": "Soft Cloud",
+      "template": "☁️｡ﾟ.  ${text}  .ﾟ｡☁️"
+    },
+    {
+      "id": "aesthetic-8",
+      "category": "aesthetic",
+      "name": "Cherry Blossom",
+      "template": "🌸₊˚.🌸\n ❀ ${text} ❀\n🌸₊˚.🌸"
+    },
+    {
+      "id": "aesthetic-9",
+      "category": "aesthetic",
+      "name": "Y2K Butterfly",
+      "template": "ı.ทﾞ.ı 🦋 ${text} 🦋 ı.ทﾞ.ı"
+    },
+    {
+      "id": "aesthetic-10",
+      "category": "aesthetic",
+      "name": "Dark Academia",
+      "template": "📜 ⋆｡˚ ${text} ˚｡⋆ 📜"
+    },
+    {
+      "id": "aesthetic-11",
+      "category": "aesthetic",
+      "name": "Fairy Core",
+      "template": "✿.｡.:* ☆:**:. ${text} .:**:.☆ *.:｡.✿"
+    },
+    {
+      "id": "aesthetic-12",
+      "category": "aesthetic",
+      "name": "Ocean Wave",
+      "template": "｡·:*:·ﾟ★🐚\n ${text}\n🐚★ﾟ·:*:·｡"
+    },
+    {
+      "id": "aesthetic-13",
+      "category": "aesthetic",
+      "name": "Crystal",
+      "template": "◇ ◆ ◇ ${text} ◇ ◆ ◇"
+    },
+    {
+      "id": "aesthetic-14",
+      "category": "aesthetic",
+      "name": "Constellation",
+      "template": "✦ . ⁺ . ✦ . ⁺ . ✦\n ☆ ${text} ☆\n✦ . ⁺ . ✦ . ⁺ . ✦"
+    },
+
+    {
+      "id": "minimal-1",
+      "category": "minimal",
+      "name": "Single Dot",
+      "template": "· ${text}"
+    },
+    {
+      "id": "minimal-2",
+      "category": "minimal",
+      "name": "Dash Line",
+      "template": "— ${text} —"
+    },
+    {
+      "id": "minimal-3",
+      "category": "minimal",
+      "name": "Bullet Point",
+      "template": "• ${text}"
+    },
+    {
+      "id": "minimal-4",
+      "category": "minimal",
+      "name": "Arrow Right",
+      "template": "→ ${text}"
+    },
+    {
+      "id": "minimal-5",
+      "category": "minimal",
+      "name": "Vertical Bar",
+      "template": "| ${text}"
+    },
+    {
+      "id": "minimal-6",
+      "category": "minimal",
+      "name": "Slash",
+      "template": "/ ${text} /"
+    },
+    {
+      "id": "minimal-7",
+      "category": "minimal",
+      "name": "Underline",
+      "template": "${text}\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾"
+    },
+    {
+      "id": "minimal-8",
+      "category": "minimal",
+      "name": "Parentheses",
+      "template": "( ${text} )"
+    },
+    {
+      "id": "minimal-9",
+      "category": "minimal",
+      "name": "Double Arrow",
+      "template": "« ${text} »"
+    },
+    {
+      "id": "minimal-10",
+      "category": "minimal",
+      "name": "Simple Star",
+      "template": "★ ${text}"
+    },
+
+    {
+      "id": "emoji-6",
+      "category": "emoji",
+      "name": "Sparkle Heart",
+      "template": "💖✨ ${text} ✨💖"
+    },
+    {
+      "id": "emoji-7",
+      "category": "emoji",
+      "name": "Ghost",
+      "template": "👻 ${text} 👻"
+    },
+    {
+      "id": "emoji-8",
+      "category": "emoji",
+      "name": "Devil Angel",
+      "template": "😇 ${text} 😈"
+    },
+    {
+      "id": "emoji-9",
+      "category": "emoji",
+      "name": "Alien",
+      "template": "👽 ${text} 🛸"
+    },
+    {
+      "id": "emoji-10",
+      "category": "emoji",
+      "name": "Skull",
+      "template": "💀 ${text} 💀"
+    },
+    {
+      "id": "emoji-11",
+      "category": "emoji",
+      "name": "Moon Phases",
+      "template": "🌑🌒🌓 ${text} 🌗🌘🌑"
+    },
+    {
+      "id": "emoji-12",
+      "category": "emoji",
+      "name": "Black Heart",
+      "template": "🖤 ${text} 🖤"
+    },
+    {
+      "id": "emoji-13",
+      "category": "emoji",
+      "name": "Butterfly",
+      "template": "🦋 ${text} 🦋"
+    },
+    {
+      "id": "emoji-14",
+      "category": "emoji",
+      "name": "Lightning",
+      "template": "⚡ ${text} ⚡"
+    },
+    {
+      "id": "emoji-15",
+      "category": "emoji",
+      "name": "Eyes",
+      "template": "👀 ${text}"
+    },
+
+    {
+      "id": "kaomoji-6",
+      "category": "kaomoji",
+      "name": "Star Eyes",
+      "template": "(☆▽☆) ${text}"
+    },
+    {
+      "id": "kaomoji-7",
+      "category": "kaomoji",
+      "name": "Cat Smile",
+      "template": "(=^･ω･^=) ${text}"
+    },
+    {
+      "id": "kaomoji-8",
+      "category": "kaomoji",
+      "name": "Lenny",
+      "template": "( ͡° ͜ʖ ͡°) ${text}"
+    },
+    {
+      "id": "kaomoji-9",
+      "category": "kaomoji",
+      "name": "Flex",
+      "template": "ᕦ(ò_óˇ)ᕤ ${text}"
+    },
+    {
+      "id": "kaomoji-10",
+      "category": "kaomoji",
+      "name": "Disapprove",
+      "template": "ಠ_ಠ ${text}"
+    },
+    {
+      "id": "kaomoji-11",
+      "category": "kaomoji",
+      "name": "Running",
+      "template": "ε=ε=ε=┌(;*´Д`)ﾉ ${text}"
+    },
+    {
+      "id": "kaomoji-12",
+      "category": "kaomoji",
+      "name": "Magic",
+      "template": "(ノ◕ヮ◕)ノ*:･ﾟ✧ ${text}"
+    },
+
+    {
+      "id": "mood-6",
+      "category": "mood",
+      "name": "Sleepy",
+      "template": "(￣o￣) zzZZ ${text}"
+    },
+    {
+      "id": "mood-7",
+      "category": "mood",
+      "name": "Angry",
+      "template": "(╬ Ò﹏Ó) ${text}"
+    },
+    {
+      "id": "mood-8",
+      "category": "mood",
+      "name": "Confused",
+      "template": "(◎_◎;) ${text}"
+    },
+    {
+      "id": "mood-9",
+      "category": "mood",
+      "name": "Crying",
+      "template": "(´;︵;`) ${text}"
+    },
+    {
+      "id": "mood-10",
+      "category": "mood",
+      "name": "In Love",
+      "template": "(♡˙︶˙♡) ${text}"
+    },
+
+    {
+      "id": "frames-6",
+      "category": "frames",
+      "name": "Pixel Frame",
+      "template": "▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n▓  ${text}  ▓\n▓▓▓▓▓▓▓▓▓▓▓▓▓▓"
+    },
+    {
+      "id": "frames-7",
+      "category": "frames",
+      "name": "Arrow Frame",
+      "template": "►►►  ${text}  ◄◄◄"
+    },
+    {
+      "id": "frames-8",
+      "category": "frames",
+      "name": "Wave Frame",
+      "template": "〰️〰️〰️〰️〰️〰️〰️\n  ${text}\n〰️〰️〰️〰️〰️〰️〰️"
+    },
+    {
+      "id": "frames-9",
+      "category": "frames",
+      "name": "Diamond Frame",
+      "template": "◇◆◇◆◇ ${text} ◇◆◇◆◇"
+    },
+    {
+      "id": "frames-10",
+      "category": "frames",
+      "name": "Block Frame",
+      "template": "▀▄▀▄▀▄ ${text} ▄▀▄▀▄▀"
+    }
+  ]
+}

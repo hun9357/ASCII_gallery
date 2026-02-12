@@ -1,0 +1,712 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import memeData from '../data/meme-templates.json';
+
+const title = 'Free Social Bio Meme Generator - ASCII Text Styles';
+const description = 'Create stylish social media bios with ASCII art templates and Unicode text styles. Perfect for Instagram, Twitter, TikTok, Discord. Copy & paste instantly!';
+
+const siteUrl = 'https://asciiartgallery.netlify.app';
+const canonicalUrl = `${siteUrl}/meme`;
+
+// JSON-LD Schema for WebApplication
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Social Bio Meme Generator",
+  "description": description,
+  "url": canonicalUrl,
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "70+ ASCII art templates",
+    "23 Unicode text styles",
+    "8 template categories",
+    "Real-time preview",
+    "Platform compatibility check",
+    "One-click copy to clipboard",
+    "Instagram, Twitter, TikTok, Discord support",
+    "No signup required"
+  ],
+  "browserRequirements": "Requires JavaScript",
+  "softwareVersion": "1.0",
+  "author": {
+    "@type": "Organization",
+    "name": "ASCII Art Gallery",
+    "url": siteUrl
+  }
+};
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl} schema={schema}>
+  <!-- Additional SEO meta tags -->
+  <Fragment slot="head">
+    <meta name="keywords" content="bio generator, social media bio, ascii text, unicode text styles, instagram bio, twitter bio, tiktok bio, discord bio, text art generator, vaporwave text" />
+    <meta property="og:image" content={`${siteUrl}/og-meme.png`} />
+    <meta name="twitter:image" content={`${siteUrl}/og-meme.png`} />
+  </Fragment>
+
+  <div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+        Social Bio Meme Generator
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Create stylish bios with ASCII templates and Unicode text styles. Perfect for Instagram, Twitter, TikTok, and Discord.
+      </p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-8">
+      <!-- Left Column: Templates & Styles -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- Step 1: Choose Template -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              1. Choose Template
+            </h2>
+            <span id="selected-template-badge" class="hidden px-2 py-1 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full">
+              None
+            </span>
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="flex flex-wrap gap-2 mb-4" role="tablist">
+            {memeData.categories.map((category, index) => (
+              <button
+                class="category-tab px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+                data-category={category.id}
+                role="tab"
+                aria-selected={index === 0 ? 'true' : 'false'}
+              >
+                <span class="mr-1">{category.icon}</span>
+                {category.name}
+              </button>
+            ))}
+          </div>
+
+          <!-- Template Grid -->
+          <div class="template-categories">
+            {memeData.categories.map((category, catIndex) => (
+              <div
+                class="template-category"
+                data-category={category.id}
+                style={catIndex !== 0 ? 'display: none;' : ''}
+              >
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                  {category.description}
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {memeData.templates
+                    .filter(t => t.category === category.id)
+                    .map((template) => (
+                      <button
+                        class="template-btn text-left p-4 bg-gray-50 dark:bg-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 border border-transparent hover:border-blue-500 group"
+                        data-template={template.template}
+                        data-template-id={template.id}
+                      >
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                            {template.name}
+                          </span>
+                          <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                          </svg>
+                        </div>
+                        <pre class="text-xs text-gray-600 dark:text-gray-400 overflow-x-auto whitespace-pre-wrap break-all">{template.template.replace('${text}', 'Your Text')}</pre>
+                      </button>
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 2: Text Styles -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              2. Choose Text Style
+            </h2>
+            <span id="selected-style-badge" class="hidden px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+              Normal
+            </span>
+          </div>
+
+          <!-- Style Categories -->
+          <div class="space-y-4">
+            <!-- Basic Styles -->
+            <div>
+              <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Basic</div>
+              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="normal">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Normal</div>
+                  <div class="text-gray-500 dark:text-gray-400">Abc</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="bold">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Bold</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝐀𝐛𝐜</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="italic">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Italic</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝘈𝘣𝘤</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="boldItalic">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Bold Italic</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝘼𝙗𝙘</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="underline">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Underline</div>
+                  <div class="text-gray-500 dark:text-gray-400">A̲b̲c̲</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Fancy Styles -->
+            <div>
+              <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Fancy</div>
+              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="script">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Script</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝒜𝒷𝒸</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="scriptBold">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Script Bold</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝓐𝓫𝓬</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="gothic">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Gothic</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝔄𝔟𝔠</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="gothicBold">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Gothic Bold</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝕬𝖇𝖈</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="doubleStruck">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Double</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝔸𝕓𝕔</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Shape Styles -->
+            <div>
+              <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Shapes</div>
+              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="bubble">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Bubble</div>
+                  <div class="text-gray-500 dark:text-gray-400">Ⓐⓑⓒ</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="bubbleFilled">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Bubble Fill</div>
+                  <div class="text-gray-500 dark:text-gray-400">🅐🅑🅒</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="squared">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Squared</div>
+                  <div class="text-gray-500 dark:text-gray-400">🄰🄱🄲</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="squaredFilled">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Square Fill</div>
+                  <div class="text-gray-500 dark:text-gray-400">🅰🅱🅲</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="parenthesized">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Parenthesis</div>
+                  <div class="text-gray-500 dark:text-gray-400">🄐⒜⒝</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Special Styles -->
+            <div>
+              <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Special</div>
+              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="vaporwave">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Vaporwave</div>
+                  <div class="text-gray-500 dark:text-gray-400">Ａｂｃ</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="smallCaps">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Small Caps</div>
+                  <div class="text-gray-500 dark:text-gray-400">ᴀʙᴄ</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="monospace">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Mono</div>
+                  <div class="text-gray-500 dark:text-gray-400">𝙰𝚋𝚌</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="currency">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Currency</div>
+                  <div class="text-gray-500 dark:text-gray-400">₳฿₵</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="superscript">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Super</div>
+                  <div class="text-gray-500 dark:text-gray-400">ᴬᵇᶜ</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Fun Styles -->
+            <div>
+              <div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Fun</div>
+              <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="sparkle">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Sparkle</div>
+                  <div class="text-gray-500 dark:text-gray-400 text-[10px]">✧･ﾟ:*</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="strikethrough">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Strike</div>
+                  <div class="text-gray-500 dark:text-gray-400">A̶b̶c̶</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="upsideDown">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Flip</div>
+                  <div class="text-gray-500 dark:text-gray-400">ɔqɐ</div>
+                </button>
+                <button class="style-btn px-2 py-2 text-xs rounded-lg bg-gray-50 dark:bg-gray-900 hover:bg-blue-50 dark:hover:bg-blue-900/30 border-2 border-transparent hover:border-blue-400 transition-all" data-style="wideSpaced">
+                  <div class="font-medium text-gray-900 dark:text-gray-100 mb-0.5">Wide</div>
+                  <div class="text-gray-500 dark:text-gray-400">A b c</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Enter Text -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+            3. Enter Your Text
+          </h2>
+
+          <textarea
+            id="input-text"
+            class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 dark:text-gray-100 resize-none"
+            rows="3"
+            placeholder="Type your bio text here..."
+            maxlength="200"
+          ></textarea>
+
+          <div class="mt-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+            <span id="char-count">0 / 200 characters</span>
+            <button
+              id="clear-btn"
+              class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors hidden"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Preview & Copy -->
+      <div class="lg:col-span-1">
+        <div class="sticky top-24">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              Preview & Copy
+            </h2>
+
+            <!-- Preview -->
+            <div class="mb-4">
+              <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 min-h-[120px] overflow-x-auto">
+                <pre id="preview-output" class="text-sm text-gray-800 dark:text-gray-200 whitespace-pre-wrap break-all">Choose a template and enter text to preview...</pre>
+              </div>
+            </div>
+
+            <!-- Platform Compatibility -->
+            <div class="mb-4 space-y-2">
+              <div class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Platform Compatibility
+              </div>
+              <div class="platform-indicator flex items-center justify-between text-xs" data-platform="instagram">
+                <span class="text-gray-600 dark:text-gray-400">Instagram</span>
+                <span class="platform-status px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                  - / 150
+                </span>
+              </div>
+              <div class="platform-indicator flex items-center justify-between text-xs" data-platform="twitter">
+                <span class="text-gray-600 dark:text-gray-400">Twitter</span>
+                <span class="platform-status px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                  - / 160
+                </span>
+              </div>
+              <div class="platform-indicator flex items-center justify-between text-xs" data-platform="tiktok">
+                <span class="text-gray-600 dark:text-gray-400">TikTok</span>
+                <span class="platform-status px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                  - / 80
+                </span>
+              </div>
+              <div class="platform-indicator flex items-center justify-between text-xs" data-platform="discord">
+                <span class="text-gray-600 dark:text-gray-400">Discord</span>
+                <span class="platform-status px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                  - / 190
+                </span>
+              </div>
+            </div>
+
+            <!-- Copy Button -->
+            <button
+              id="copy-result-btn"
+              class="w-full py-3 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-500 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+              disabled
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+              <span id="copy-btn-text">Copy to Clipboard</span>
+            </button>
+
+            <!-- Quick Tips -->
+            <div class="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <p class="text-xs text-blue-700 dark:text-blue-300">
+                <strong>Tip:</strong> Keep it short for better compatibility across platforms!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <section class="mt-12 prose prose-gray dark:prose-invert max-w-none">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">What is a Social Bio Meme Generator?</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-4">
+        A social bio meme generator helps you create stylish, eye-catching bios for your social media profiles.
+        Using ASCII art templates and Unicode text transformations, you can make your bio stand out on
+        Instagram, Twitter, TikTok, Discord, and other platforms.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 mt-8">How to Use This Tool</h2>
+      <ol class="list-decimal list-inside text-gray-600 dark:text-gray-400 space-y-2">
+        <li>Choose an ASCII art template from 6 categories (Frames, Aesthetic, Emoji, Social, Mood, Kaomoji)</li>
+        <li>Select a text style like Vaporwave, Bubble, Gothic, or keep it normal</li>
+        <li>Type your bio text and see a real-time preview</li>
+        <li>Check platform compatibility for Instagram, Twitter, TikTok, and Discord</li>
+        <li>Click "Copy to Clipboard" and paste into your social profile</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 mt-8">Popular Text Styles (23 Styles)</h2>
+      <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
+        <li><strong>Vaporwave</strong> - Full-width characters for retro aesthetic (Ｔｅｘｔ)</li>
+        <li><strong>Script Bold</strong> - Elegant cursive style (𝓣𝓮𝔁𝓽)</li>
+        <li><strong>Gothic</strong> - Old English medieval style (𝔗𝔢𝔵𝔱)</li>
+        <li><strong>Double Struck</strong> - Mathematical blackboard style (𝕋𝕖𝕩𝕥)</li>
+        <li><strong>Bubble</strong> - Circled letters for playful look (Ⓣⓔⓧⓣ)</li>
+        <li><strong>Square Filled</strong> - Bold square letters (🆃🅴🆇🆃)</li>
+        <li><strong>Sparkle</strong> - Add sparkles around text (✧･ﾟ: * Text *:･ﾟ✧)</li>
+        <li><strong>Upside Down</strong> - Flip your text for fun (ʇxǝ⊥)</li>
+        <li><strong>Wide Spaced</strong> - Space between each letter (T e x t)</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 mt-8">Platform Character Limits</h2>
+      <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
+        <li><strong>Instagram Bio</strong> - 150 characters maximum</li>
+        <li><strong>Twitter Bio</strong> - 160 characters maximum</li>
+        <li><strong>TikTok Bio</strong> - 80 characters maximum</li>
+        <li><strong>Discord Status</strong> - 190 characters maximum</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Toast Notification -->
+  <div
+    id="toast"
+    class="hidden fixed bottom-4 right-4 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-6 py-3 rounded-lg shadow-lg transition-all transform translate-y-0 opacity-100 z-50"
+  >
+    <div class="flex items-center gap-3">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      <span id="toast-message">Success!</span>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    import { transformText, type TextStyle, platformLimits, checkPlatformCompatibility } from '../utils/textTransform';
+
+    // State
+    let currentTemplate = '';
+    let currentStyle: TextStyle | 'normal' = 'normal';
+    let currentText = '';
+    let currentOutput = '';
+
+    // DOM Elements
+    const categoryTabs = document.querySelectorAll('.category-tab') as NodeListOf<HTMLButtonElement>;
+    const templateCategories = document.querySelectorAll('.template-category') as NodeListOf<HTMLDivElement>;
+    const templateBtns = document.querySelectorAll('.template-btn') as NodeListOf<HTMLButtonElement>;
+    const styleBtns = document.querySelectorAll('.style-btn') as NodeListOf<HTMLButtonElement>;
+    const inputText = document.getElementById('input-text') as HTMLTextAreaElement;
+    const charCount = document.getElementById('char-count') as HTMLSpanElement;
+    const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement;
+    const previewOutput = document.getElementById('preview-output') as HTMLPreElement;
+    const copyResultBtn = document.getElementById('copy-result-btn') as HTMLButtonElement;
+    const copyBtnText = document.getElementById('copy-btn-text') as HTMLSpanElement;
+    const toast = document.getElementById('toast') as HTMLDivElement;
+    const toastMessage = document.getElementById('toast-message') as HTMLSpanElement;
+    const platformIndicators = document.querySelectorAll('.platform-indicator') as NodeListOf<HTMLDivElement>;
+    const selectedTemplateBadge = document.getElementById('selected-template-badge') as HTMLSpanElement;
+    const selectedStyleBadge = document.getElementById('selected-style-badge') as HTMLSpanElement;
+
+    // Style display names
+    const styleNames: Record<string, string> = {
+      normal: 'Normal',
+      bold: 'Bold',
+      italic: 'Italic',
+      boldItalic: 'Bold Italic',
+      underline: 'Underline',
+      script: 'Script',
+      scriptBold: 'Script Bold',
+      gothic: 'Gothic',
+      gothicBold: 'Gothic Bold',
+      doubleStruck: 'Double',
+      bubble: 'Bubble',
+      bubbleFilled: 'Bubble Fill',
+      squared: 'Squared',
+      squaredFilled: 'Square Fill',
+      parenthesized: 'Parenthesis',
+      vaporwave: 'Vaporwave',
+      smallCaps: 'Small Caps',
+      monospace: 'Mono',
+      currency: 'Currency',
+      superscript: 'Super',
+      sparkle: 'Sparkle',
+      strikethrough: 'Strike',
+      upsideDown: 'Flip',
+      wideSpaced: 'Wide'
+    };
+
+    // Show toast notification
+    function showToast(message: string) {
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    // Update preview
+    function updatePreview() {
+      let text = currentText;
+
+      // Apply text style if not normal
+      if (currentStyle !== 'normal' && text) {
+        text = transformText(text, currentStyle);
+      }
+
+      // Apply template
+      if (currentTemplate && text) {
+        currentOutput = currentTemplate.replace('${text}', text);
+      } else if (text) {
+        currentOutput = text;
+      } else {
+        currentOutput = '';
+      }
+
+      // Update preview display
+      if (currentOutput) {
+        previewOutput.textContent = currentOutput;
+        copyResultBtn.disabled = false;
+      } else {
+        previewOutput.textContent = 'Choose a template and enter text to preview...';
+        copyResultBtn.disabled = true;
+      }
+
+      // Update platform compatibility
+      updatePlatformCompatibility();
+    }
+
+    // Update platform compatibility indicators
+    function updatePlatformCompatibility() {
+      const length = currentOutput.length;
+
+      platformIndicators.forEach((indicator) => {
+        const platform = indicator.dataset.platform as keyof typeof platformLimits;
+        const statusEl = indicator.querySelector('.platform-status') as HTMLSpanElement;
+        const limit = platformLimits[platform].limit;
+        const isValid = length <= limit;
+
+        if (length > 0) {
+          statusEl.textContent = `${length} / ${limit}`;
+
+          if (isValid) {
+            statusEl.classList.remove('bg-red-100', 'dark:bg-red-900/30', 'text-red-700', 'dark:text-red-400');
+            statusEl.classList.add('bg-green-100', 'dark:bg-green-900/30', 'text-green-700', 'dark:text-green-400');
+          } else {
+            statusEl.classList.remove('bg-green-100', 'dark:bg-green-900/30', 'text-green-700', 'dark:text-green-400');
+            statusEl.classList.add('bg-red-100', 'dark:bg-red-900/30', 'text-red-700', 'dark:text-red-400');
+          }
+        } else {
+          statusEl.textContent = `- / ${limit}`;
+          statusEl.classList.remove('bg-green-100', 'dark:bg-green-900/30', 'text-green-700', 'dark:text-green-400', 'bg-red-100', 'dark:bg-red-900/30', 'text-red-700', 'dark:text-red-400');
+          statusEl.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-400');
+        }
+      });
+    }
+
+    // Category tab click handlers
+    categoryTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const category = tab.dataset.category;
+
+        // Update tab states
+        categoryTabs.forEach(t => {
+          t.classList.remove('bg-blue-500', 'text-white', 'shadow-md');
+          t.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+        tab.classList.add('bg-blue-500', 'text-white', 'shadow-md');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Show corresponding template category
+        templateCategories.forEach(cat => {
+          if (cat.dataset.category === category) {
+            cat.style.display = 'block';
+          } else {
+            cat.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Initialize first category tab
+    if (categoryTabs.length > 0) {
+      categoryTabs[0].classList.add('bg-blue-500', 'text-white', 'shadow-md');
+      categoryTabs[0].classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+    }
+
+    // Template button click handlers
+    templateBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        currentTemplate = btn.dataset.template || '';
+        const templateName = btn.querySelector('.text-sm.font-medium, span.font-medium')?.textContent || 'Selected';
+
+        // Update button states
+        templateBtns.forEach(b => {
+          b.classList.remove('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/30', 'ring-2', 'ring-blue-500');
+        });
+        btn.classList.add('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/30', 'ring-2', 'ring-blue-500');
+
+        // Update badge
+        selectedTemplateBadge.textContent = templateName;
+        selectedTemplateBadge.classList.remove('hidden');
+
+        updatePreview();
+
+        // Track template selection
+        if (typeof gtag === 'function') {
+          gtag('event', 'select_template', {
+            'template_id': btn.dataset.templateId,
+          });
+        }
+      });
+    });
+
+    // Style button click handlers
+    styleBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        currentStyle = btn.dataset.style as TextStyle | 'normal';
+
+        // Update button states
+        styleBtns.forEach(b => {
+          b.classList.remove('border-blue-500', 'bg-blue-100', 'dark:bg-blue-900', 'ring-2', 'ring-blue-500');
+        });
+        btn.classList.add('border-blue-500', 'bg-blue-100', 'dark:bg-blue-900', 'ring-2', 'ring-blue-500');
+
+        // Update badge
+        const styleName = styleNames[currentStyle] || currentStyle;
+        selectedStyleBadge.textContent = styleName;
+        selectedStyleBadge.classList.remove('hidden');
+
+        updatePreview();
+
+        // Track style selection
+        if (typeof gtag === 'function') {
+          gtag('event', 'select_style', {
+            'style': currentStyle,
+          });
+        }
+      });
+    });
+
+    // Initialize normal style as selected
+    if (styleBtns.length > 0) {
+      styleBtns[0].classList.add('border-blue-500', 'bg-blue-100', 'dark:bg-blue-900', 'ring-2', 'ring-blue-500');
+      selectedStyleBadge.textContent = 'Normal';
+      selectedStyleBadge.classList.remove('hidden');
+    }
+
+    // Input text handler
+    inputText.addEventListener('input', () => {
+      currentText = inputText.value;
+      charCount.textContent = `${currentText.length} / 200 characters`;
+
+      if (currentText.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+
+      updatePreview();
+    });
+
+    // Clear button handler
+    clearBtn.addEventListener('click', () => {
+      inputText.value = '';
+      currentText = '';
+      charCount.textContent = '0 / 200 characters';
+      clearBtn.classList.add('hidden');
+      updatePreview();
+    });
+
+    // Copy button handler
+    copyResultBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(currentOutput);
+
+        // Update button state
+        copyBtnText.textContent = 'Copied!';
+        copyResultBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+        copyResultBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+
+        setTimeout(() => {
+          copyBtnText.textContent = 'Copy to Clipboard';
+          copyResultBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+          copyResultBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+        }, 2000);
+
+        showToast('Copied to clipboard!');
+
+        // Track copy event
+        if (typeof gtag === 'function') {
+          gtag('event', 'copy_meme', {
+            'content_length': currentOutput.length,
+            'style': currentStyle,
+          });
+        }
+      } catch (error) {
+        showToast('Failed to copy. Please try again.');
+        console.error('Copy error:', error);
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ctrl/Cmd + C to copy when preview is not empty
+      if ((e.ctrlKey || e.metaKey) && e.key === 'c' && currentOutput && !copyResultBtn.disabled) {
+        if (window.getSelection()?.toString() === '' && document.activeElement !== inputText) {
+          e.preventDefault();
+          copyResultBtn.click();
+        }
+      }
+
+      // Escape to clear
+      if (e.key === 'Escape' && document.activeElement === inputText) {
+        clearBtn.click();
+      }
+    });
+  </script>
+</BaseLayout>
