@@ -19,8 +19,8 @@
   force = true
 
 [[redirects]]
-  from = "/ga/collect/*"
-  to = "https://www.google-analytics.com/g/collect/:splat"
+  from = "/ga/collect/g/collect"
+  to = "https://www.google-analytics.com/g/collect"
   status = 200
   force = true
 
