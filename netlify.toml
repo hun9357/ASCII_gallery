@@ -13,6 +13,18 @@
     X-Content-Type-Options = "nosniff"
 
 [[redirects]]
+  from = "/ga/js"
+  to = "https://www.googletagmanager.com/gtag/js?id=G-01XHTZ2N2E"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ga/collect/*"
+  to = "https://www.google-analytics.com/g/collect/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404

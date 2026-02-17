@@ -64,13 +64,15 @@ const schemaMarkup = schema || defaultSchema;
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
 
-    <!-- Google Analytics 4 -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-01XHTZ2N2E"></script>
+    <!-- Google Analytics 4 (proxied via Netlify to bypass ad blockers) -->
+    <script is:inline async src="/ga/js"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-01XHTZ2N2E');
+      gtag('config', 'G-01XHTZ2N2E', {
+        transport_url: window.location.origin + '/ga/collect'
+      });
     </script>
 
     <!-- AdSense placeholder - replace with actual code after approval -->
